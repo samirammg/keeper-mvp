@@ -4,6 +4,7 @@ import plotly.express as px
 from dateutil.relativedelta import relativedelta
 from streamlit_extras.switch_page_button import switch_page
 from utils import hide_sidebar
+from navigation import show_navigation
 
 st.set_page_config(page_title="Support Trends", layout="wide")
 hide_sidebar()
@@ -24,42 +25,7 @@ def show():
     with st.container():
         col1, col3 = st.columns([4, 1])
         with col3:
-            menu = st.selectbox("", [
-                "↳ 💬 Stay on Support Trends",
-                "🩺 Team Pulse",
-                "↳  📌 CSM Activity",
-                "↳  📊 Product Usage",
-                "📘 Customer Pulse",
-                "🧩 Keeper Pulse",
-                "💓 Growth Pulse",
-                "📈 Vision Pulse",
-                "↳  🧭 Strategy",
-                "🚀 Keeper Agents",
-                "🗄️ Keeper Data"
-            ], label_visibility="collapsed")
-
-    if menu == "↳ 💬 Stay on Support Trends":
-        pass
-    elif menu == "📘 Customer Pulse":
-        switch_page("Journey")
-    elif menu == "🧩 Keeper Pulse":
-        switch_page("Pulse")
-    elif menu == "💓 Growth Pulse":
-        switch_page("GrowthPulse")
-    elif menu == "🩺 Team Pulse":
-        switch_page("TeamPulse")
-    elif menu == "↳  📌 CSM Activity":
-        switch_page("Activity")
-    elif menu == "↳  📊 Product Usage":
-        switch_page("Usage")
-    elif menu == "📈 Vision Pulse":
-        switch_page("VisionPulse")
-    elif menu == "↳  🧭 Strategy":
-        switch_page("Strategy")
-    elif menu == "🚀 Keeper Agents":
-        switch_page("agent")
-    elif menu == "🗄️ Keeper Data":
-        switch_page("onbording")
+            show_navigation()
        
     # --- Load Data ---
     @st.cache_data
