@@ -153,7 +153,7 @@ def show():
         # --- Chat + Alert System (left) ---
         
         
-        chat_col1, chat_col2 = st.columns(2)
+        chat_col1, chat_col2 = st.columns([2,1])
         
         with chat_col1:
             st.markdown("##### 🚨 Alert System for Emerging Risks")
@@ -226,24 +226,24 @@ def show():
         fig_row1_col1, fig_row1_col2 = st.columns(2)
     
         with fig_row1_col1:
-            st.markdown("#### ⏳ Stage Trends: Contracts Over Time")
+            #st.markdown("#### ⏳ Stage Trends: Contracts Over Time")
             df_score_c_trimmed = df_score[df_score['FOM'] <= selected_fom_dt].copy()
             df_score_c_melted = df_score_c_trimmed.melt(id_vars='FOM_str', value_vars=['adoption', 'expansion', 'renewal', 'risky'],
                                                         var_name='stage', value_name='count')
     
             fig2 = px.bar(df_score_c_melted, x='FOM_str', y='count', color='stage', barmode='stack',
-                          title='Number of Contracts Over Time by Stage',
+                          title='⏳ Stage Trends Over Time',
                           color_discrete_map={"risky": c_risky, "adoption": c_adoption, "expansion": c_expansion, "renewal": c_renew})
             fig2.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500)
             st.plotly_chart(fig2, use_container_width=True)
     
     
         with fig_row1_col2:
-            st.markdown("#### 🗺️ Industry for Risky Customers")
+            #st.markdown("#### 🗺️ Industry for Risky Customers")
             risky_fom = df_fom[df_fom['stage'] == 'risky']
             risky_fom['contract_count'] = 1
             fig3 = px.treemap(risky_fom, path=['industry'], values='contract_count',
-                              title='Industry Composition (Risky)',
+                              title='🗺️Industry Composition of Risky Customers ',
                               color_discrete_sequence=[c_risky])
             st.plotly_chart(fig3, use_container_width=True)
     
@@ -251,17 +251,17 @@ def show():
         fig_row2_col1, fig_row2_col2 = st.columns(2)
     
         with fig_row2_col1:
-            st.markdown("#### 📈 Contracts by MOC")
+            #st.markdown("#### 📈 Contracts by MOC")
             fig4 = px.histogram(df_fom, x='MOC', color='stage', barmode='stack',
-                                title='Number of Contracts by MOC',
+                                title='📈 Number of Contracts by MOC',
                                 color_discrete_map={"risky": c_risky, "adoption": c_adoption, "expansion":c_expansion, "renewal": c_renew})
             fig4.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500)
             st.plotly_chart(fig4, use_container_width=True)
     
         with fig_row2_col2:
-            st.markdown("#### 🧩 Business Size Distribution for Risky Customers")
+            #st.markdown("#### 🧩 Business Size Distribution for Risky Customers")
             risky_fom = df_fom[df_fom['stage'] == 'risky']
-            fig5 = px.pie(risky_fom, names='business_size', title='Business Size Breakdown (Risky)',
+            fig5 = px.pie(risky_fom, names='business_size', title='🧩Business Size Breakdown of Risky Customers',
                           color_discrete_sequence=[c_risky])
             st.plotly_chart(fig5, use_container_width=True)
     
