@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from streamlit_extras.switch_page_button import switch_page
 from utils import hide_sidebar
+from navigation import show_navigation
 
 
 st.set_page_config(page_title="Strategy", layout="wide")
@@ -27,46 +28,8 @@ def show():
     with st.container():
         col1, col3 = st.columns([4, 1])
         
-        menu = col3.selectbox(
-            "",
-            [
-                "↳  🧭 Stay on Strategy",
-                "📈 Vision Pulse",
-                "📘 Customer Pulse",
-                "🧩 Keeper Pulse",
-                "💓 Growth Pulse",
-                "🩺 Team Pulse",
-                "↳  📌 CSM Activity",
-                "↳  💬 Support Trends",
-                "↳  📊 Product Usage",
-                "🚀 Keeper Agents",
-                "🗄️ Keeper Data"
-                
-            ],
-            label_visibility="collapsed"
-        )
-
-        if menu == "↳  🧭 Stay on Strategy":
-            pass
-        elif menu == "📘 Customer Pulse":
-            switch_page("Journey")
-        elif menu == "💓 Growth Pulse":
-            switch_page("GrowthPulse")
-        elif menu == "🩺 Team Pulse":
-            switch_page("TeamPulse")
-        elif menu == "↳  📌 CSM Activity":
-            switch_page("Activity")
-        elif menu == "↳  💬 Support Trends":
-            switch_page("Support")
-        elif menu == "↳  📊 Product Usage":
-            switch_page("Usage")
-        elif menu == "📈 Vision Pulse":
-            switch_page("VisionPulse")
-        elif menu == "🚀 Keeper Agents":
-            switch_page("agent")
-        elif menu == "🗄️ Keeper Data":
-            switch_page("onbording")
-
+        with col3:
+            show_navigation()
         
         
     
