@@ -121,6 +121,7 @@ def show():
                     """, unsafe_allow_html=True)
                 with sub_col2:
                     st.markdown("")
+                    st.markdown("")
                     # Load and filter score data for selected account
                     df = df_score[df_score['account_name'] == selected_account_id].copy()
                     contract_starts = df.groupby('contract_id').first().reset_index()
