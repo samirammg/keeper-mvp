@@ -25,7 +25,7 @@ def show():
     with st.container():
         col1, col3 = st.columns([4, 1])
         with col3:
-            show_navigation()
+            show_navigation("🧩 Keeper Pulse")
     
     c_risky='#6f6f6f'
     c_adoption='#9ccee1'
