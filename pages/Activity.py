@@ -195,16 +195,14 @@ def show():
                 'postal_count_sum': 'postal'
             })
             fig1 = px.bar(fig1_df, x='FOM_str', y='Count', color='Activity Type',title='CSM Activities', barmode='stack', height=250)
-
+            
             fig1.update_layout(
                 font=dict(size=10),
                 xaxis=dict(
                     title='',
                     tickangle=0,
                     tickfont=dict(size=8),
-                    automargin=True,
-                    tickpadding=10
-                ),
+                    automargin=True                ),
                 yaxis=dict(
                     title='Count',
                     tickfont=dict(size=9)
