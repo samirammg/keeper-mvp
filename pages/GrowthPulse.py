@@ -199,7 +199,7 @@ def show():
         
         
     with right_col:
-        st.markdown("---")
+        st.markdown(" ")
         st.markdown("###### 🚨 Alert System for Emerging Risks")
         recs = [
         {"Suggestion": "5 enterprise customers have data outage since 2025-04-30 09:00 AM"},
