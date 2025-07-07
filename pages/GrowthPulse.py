@@ -163,9 +163,9 @@ def show():
         # Style columns as HTML
         display_html = display_df.to_html(escape=False, index=False)
         # Center headers and cells via inline CSS
-        styled_html = display_html.replace('<table','<table style="width:100%; text-align:center; border-collapse: collapse;font-size:12px;"')
-        styled_html = styled_html.replace('<th>','<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:12px;">')
-        styled_html = styled_html.replace('<td>','<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:12px;">')
+        styled_html = display_html.replace('<table','<table style="width:100%; text-align:center; border-collapse: collapse;font-size:10px;"')
+        styled_html = styled_html.replace('<th>','<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
+        styled_html = styled_html.replace('<td>','<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
         st.write(styled_html, unsafe_allow_html=True)
        # Modify button spanning table width
         st.button("Modify", use_container_width=True)
@@ -185,10 +185,10 @@ def show():
         # Center table and style borders
         todos_html = todos_html.replace(
             '<table',
-            '<table style="width:100%; border-collapse: collapse; text-align:center;font-size:12px;"'
+            '<table style="width:100%; border-collapse: collapse; text-align:center;font-size:10px;"'
         )
-        todos_html = todos_html.replace('<th>', '<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:12px;">')
-        todos_html = todos_html.replace('<td>', '<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:12px;">')
+        todos_html = todos_html.replace('<th>', '<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
+        todos_html = todos_html.replace('<td>', '<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
         st.write(todos_html, unsafe_allow_html=True)
         st.button("Review", use_container_width=True)
 
@@ -199,7 +199,7 @@ def show():
         
         
     with right_col:
-        st.markdown("#### 🚨 Alert System for Emerging Risks")
+        st.markdown("###### 🚨 Alert System for Emerging Risks")
         recs = [
         {"Suggestion": "5 enterprise customers have data outage since 2025-04-30 09:00 AM"},
         {"Suggestion": "6 of 17 accounts have renewal risk; renewal date end of this month"},
@@ -207,13 +207,16 @@ def show():
     ]
         with st.container(border=True):
             for r in recs:
-                #st.write(f"⚠️ {r['Suggestion']}")
-                st.markdown(f"⚠️ {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
-
+                st.markdown(
+                    f"<span style='font-size:13px;'>⚠️ {r['Suggestion']} "
+                    "<span style='color:blue;text-decoration:underline'>(click)</span></span>",
+                    unsafe_allow_html=True
+                )
+        
         #st.markdown("---")
 
         # --- Recommendations Section ---
-        st.markdown("#### 💡 Recommendations")
+        st.markdown("###### 💡 Recommendations")
         recs = [
             {"Suggestion": "Churn Prevention Agent drove a 15% drop in churn; follow up with top 5 at-risk accounts"},
             {"Suggestion": "Meeting Setup Doer boosted attendance by 30%, increasing renewal likelihood by 12%"},
@@ -223,13 +226,13 @@ def show():
         ]
         with st.container(border=True):
             for r in recs:
-                st.markdown(f"🎯 {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
+                st.markdown(f"<span style='font-size:13px;'>🎯 {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
         #st.markdown("---")
 
 
-        #st.markdown("#### 🤖 Ask Keeper")
+        #st.markdown("###### 🤖 Ask Keeper")
         default_q = "Why Pulse of company 1 is risky?"
-        user_input = st.text_area("##### 🤖 Ask Keeper", value=default_q, height=100)
+        user_input = st.text_area("####### 🤖 Ask Keeper", value=default_q, height=100)
         if st.button("Ask Keeper"):
             st.info("""
         ❌ Declining product usage (↓40% in last 2 months)  
