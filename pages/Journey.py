@@ -32,7 +32,7 @@ def show():
     with st.container():
         col1, col3 = st.columns([4, 1])
         with col3:
-            show_navigation()
+            show_navigation("📘 Customer Pulse")
         
         
     # --- Config ---
