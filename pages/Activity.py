@@ -97,11 +97,13 @@ def show():
         filter_col = st.columns([4, 1])[1]
         with filter_col:
             #selected_fom = st.selectbox("", df_summary['FOM_str'].unique()[::-1], label_visibility="collapsed")
+            valid_dates = df_summary[
+            (df_summary["FOM_str"] >= "2023-01") & (df_summary["FOM_str"] <= "2025-07")]["FOM_str"].unique()[::-1]
             selected_fom = st.selectbox(
                 "Selected Date",
-                df_summary['FOM_str'].unique()[::-1],
-                index=list(df_summary['FOM_str'].unique()[::-1]).index("2025-04")
-                )
+                valid_dates,
+                index=list(valid_dates).index("2025-04") if "2025-04" in valid_dates else 0
+            )
     
     selected_fom_dt = pd.to_datetime(selected_fom)
     row = df_summary[df_summary['FOM_str'] == selected_fom].iloc[0]
