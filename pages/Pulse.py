@@ -4,6 +4,7 @@ import plotly.express as px
 from datetime import datetime
 from streamlit_extras.switch_page_button import switch_page
 from utils import hide_sidebar
+from navigation import show_navigation
 
 
 st.set_page_config(page_title="Pulse", layout="wide")
@@ -24,43 +25,7 @@ def show():
     with st.container():
         col1, col3 = st.columns([4, 1])
         with col3:
-            menu = st.selectbox("", [
-                "🧩 Stay on Keeper Pulse",
-                "📘 Customer Pulse",
-                "💓 Growth Pulse",
-                "🩺 Team Pulse",
-                "↳  📌 CSM Activity",
-                "↳  💬 Support Trends",
-                "↳  📊 Product Usage",
-                "📈 Vision Pulse",
-                "↳  🧭 Strategy",
-                "🚀 Keeper Agents",
-                "🗄️ Keeper Data"
-            ], label_visibility="collapsed")
-
-    if menu == "🧩 Stay on Keeper Pulse":
-        st.info("You're already on Keeper Pulse.")
-    elif menu == "📘 Customer Pulse":
-        st.page_link("pages/Journey.py", label="➡️ Go to Customer Pulse", icon="📘")
-    elif menu == "💓 Growth Pulse":
-        st.page_link("pages/GrowthPulse.py", label="➡️ Go to Growth Pulse", icon="💓")
-    elif menu == "🩺 Team Pulse":
-        st.page_link("pages/TeamPulse.py", label="➡️ Go to Team Pulse", icon="🩺")
-    elif menu == "↳  📌 CSM Activity":
-        st.page_link("pages/Activity.py", label="➡️ Go to CSM Activity", icon="📌")
-    elif menu == "↳  💬 Support Trends":
-        st.page_link("pages/Support.py", label="➡️ Go to Support Trends", icon="💬")
-    elif menu == "↳  📊 Product Usage":
-        st.page_link("pages/Usage.py", label="➡️ Go to Product Usage", icon="📊")
-    elif menu == "📈 Vision Pulse":
-        st.page_link("pages/VisionPulse.py", label="➡️ Go to Vision Pulse", icon="📈")
-    elif menu == "↳  🧭 Strategy":
-        st.page_link("pages/Strategy.py", label="➡️ Go to Strategy", icon="🧭")
-    elif menu == "🚀 Keeper Agents":
-        st.page_link("pages/agent.py", label="➡️ Go to Keeper Agents", icon="🚀")
-    elif menu == "🗄️ Keeper Data":
-        st.page_link("pages/onbording.py", label="➡️ Go to Keeper Data", icon="🗄️")
-    
+            show_navigation()
     
     c_risky='#6f6f6f'
     c_adoption='#9ccee1'
