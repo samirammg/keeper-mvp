@@ -6,14 +6,8 @@ import matplotlib.dates as mdates
 from pandas.tseries.offsets import DateOffset
 from streamlit_extras.switch_page_button import switch_page
 from utils import hide_sidebar
+from navigation import show_navigation
 
-if "page" in st.session_state:
-    page = st.session_state.page
-    st.session_state.page = None  # Reset it to avoid infinite loop
-    st.switch_page(f"{page}.py")  # Or handle manually
-    
-
-###### data files:
 ######### 0_sim_contract.xlsx
 ######### 5_model_final_score_dashboard_data.csv
 ##################################################### 
@@ -37,24 +31,7 @@ def show():
     with st.container():
         col1, col3 = st.columns([4, 1])
         with col3:
-            menu_options = {
-                "🧩 Keeper Pulse": "Pulse",
-                "💓 Growth Pulse": "GrowthPulse",
-                "🩺 Team Pulse": "TeamPulse",
-                "↳  📌 CSM Activity": "Activity",
-                "↳  💬 Support Trends": "Support",
-                "↳  📊 Product Usage": "Usage",
-                "📈 Vision Pulse": "VisionPulse",
-                "↳  🧭 Strategy": "Strategy",
-                "🚀 Keeper Agents": "agent",
-                "🗄️ Keeper Data": "onbording"
-            }
-
-            selection = st.selectbox("", ["📘 Stay on Customer Pulse"] + list(menu_options.keys()), label_visibility="collapsed")
-
-    if selection != "📘 Stay on Customer Pulse":
-        st.session_state["page"] = menu_options[selection]
-        st.experimental_rerun()
+            show_navigation()
         
         
     # --- Config ---
