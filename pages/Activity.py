@@ -196,7 +196,21 @@ def show():
             })
             fig1 = px.bar(fig1_df, x='FOM_str', y='Count', color='Activity Type',
                           title='CSM Activities', barmode='stack', height=250)
-            fig1.update_layout(legend_orientation='h', legend_y=-0.2)
+
+            fig1.update_layout(
+                legend_orientation='h',
+                legend_y=-0.3,  # Lowered for more distance from x-axis
+                legend_font=dict(size=10),  # Smaller legend text
+                margin=dict(b=70),  # Add bottom margin to separate legend and x-axis
+                xaxis_title=None,
+                xaxis=dict(
+                    tickfont=dict(size=10),  # Smaller x-axis labels
+                    tickangle=-45  # Optional: tilt for clarity
+                )
+            )
+
+            
+            #fig1.update_layout(legend_orientation='h', legend_y=-0.2)
             st.plotly_chart(fig1, use_container_width=True)
         
         with col2:
