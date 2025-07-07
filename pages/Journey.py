@@ -369,7 +369,7 @@ def show():
                         ask_keeper_clicked = st.button("Ask Keeper", key="ask_keeper_button")
 
                         if ask_keeper_clicked:
-                            st.text_area("Keeper's Response", value=story_row.get("answer", "Keeper Processing..."), height=60)
+                            st.text_area("Keeper's Response", value=story_row.get("answer", "Keeper Processing..."), height=100)
 
                         st.markdown(f"""
                         <h3 style='margin-top: 24px;'>🧠 Generative Insight</h3>
