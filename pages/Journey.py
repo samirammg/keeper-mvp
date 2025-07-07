@@ -105,9 +105,9 @@ def show():
             with col_left:
                 sub_col1, sub_col2 = st.columns([1, 2], gap="large")
                 with sub_col1:
-                    st.markdown(f"<h5 style='margin-bottom: 5px;'>📘 Account Overview</h5>", unsafe_allow_html=True)
+                    st.markdown(f"<h5 style='margin-bottom:0;'>📘 Account Overview</h5>", unsafe_allow_html=True)
                     st.markdown(f"""
-                    <div style='border: 1px solid #d3d3d3; border-radius: 10px; padding: 20px;'>
+                    <div style='border: 1px solid #d3d3d3; border-radius: 10px; padding: 10px;'>
                         <table style='width: 100%; font-size: 10px;'>
                             <tr><td><b>Account Name</b></td><td>{account_name}</td></tr>
                             <tr><td><b>Industry</b></td><td>{industry}</td></tr>
@@ -120,7 +120,7 @@ def show():
                             </div>
                     """, unsafe_allow_html=True)
                 with sub_col2:
-                    st.markdown("")
+                    #st.markdown("")
                     # Load and filter score data for selected account
                     df = df_score[df_score['account_name'] == selected_account_id].copy()
                     contract_starts = df.groupby('contract_id').first().reset_index()
@@ -147,7 +147,7 @@ def show():
                     end_date_range = start_date_range + DateOffset(years=7)
             
                     # Plotting
-                    fig, ax = plt.subplots(figsize=(12, 4))
+                    fig, ax = plt.subplots(figsize=(12, 7))
             
                     for spine in ax.spines.values():
                         spine.set_visible(False)
