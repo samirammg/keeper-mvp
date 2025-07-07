@@ -78,11 +78,14 @@ def show():
         filter_col = st.columns([4, 1])[1]
         with filter_col:
             #selected_fom = st.selectbox("", df_summary['FOM_str'].unique()[::-1], label_visibility="collapsed")
+            valid_dates = df_summary[
+            (df_summary["FOM_str"] >= "2023-01") & (df_summary["FOM_str"] <= "2025-07")]["FOM_str"].unique()[::-1]
             selected_fom = st.selectbox(
                 "Selected Date",
-                df_summary['FOM_str'].unique()[::-1],
-                index=list(df_summary['FOM_str'].unique()[::-1]).index("2025-04")
+                valid_dates,
+                index=list(valid_dates).index("2025-04") if "2025-04" in valid_dates else 0
             )
+
 
     row = df_summary[df_summary['FOM_str'] == selected_fom].iloc[0]
     
@@ -123,7 +126,7 @@ def show():
     
     st.markdown("---")
     # --- Main Two-Column Layout ---
-    left_col, right_col = st.columns([1, 1])
+    left_col, right_col = st.columns([1, 1.5])
     st.markdown("---")
     # --- LEFT: Generative Insights + Keeper ---
     with left_col:
@@ -133,7 +136,7 @@ def show():
             content = f"""
             <div style='border:1px solid #ddd; border-radius:8px; padding:10px; background-color:#f9f9f9; margin-bottom:12px;'>
                 <h5 style='margin-bottom:8px; font-size:16px;'>{title}</h5>
-                <ul style='padding-left:14px; font-size:6px; line-height:1; margin:0;'>
+                <ul style='padding-left:14px; font-size:10px; line-height:1; margin:0;'>
             """
             for topic, subject in items:
                 bullet = color_map.get(topic, "") if use_icons else "•"
@@ -155,15 +158,11 @@ def show():
             user_question = st.text_input(label=" ", placeholder="Ask Keeper a quick question...", label_visibility="collapsed")
             col_q1, col_q2 = st.columns([6, 1])
             with col_q2:
-                if st.button("Ask", use_container_width=True):
-                    if user_question.strip():
-                        st.success("✅ Keeper has noted your question!")
-                    else:
-                        st.warning("⚠️ Please type your question first.")
+                st.button("Ask", use_container_width=True)
     
     # --- RIGHT: Visual Insights (Layered Order) ---
     with right_col:
-        st.markdown("##### 💡Visual Insights")
+        #st.markdown("##### 💡Visual Insights")
     
         df_viz = df[df['FOM_str'] <= selected_fom].copy()
         df_viz['cumulative_total_tickets'] = df_viz['total_tickets'].cumsum()
@@ -180,21 +179,62 @@ def show():
             #st.markdown("###### 📈 Support Ticket Trend")
             st.markdown("<h6 style='text-align: center; font-size: 10px; margin-bottom: 6px;'>📈 Support Ticket Trend </h6>", unsafe_allow_html=True)
     
-            st.plotly_chart(px.line(df_viz, x='FOM', y='cumulative_total_tickets').update_layout(height=220, margin=dict(l=5, r=5, t=30, b=10)), use_container_width=True)
+            #st.plotly_chart(px.line(df_viz, x='FOM', y='cumulative_total_tickets').update_layout(height=220, margin=dict(l=5, r=5, t=30, b=10)), use_container_width=True)
          
+            fig_support = px.line(df_viz, x='FOM', y='cumulative_total_tickets')
+
+            fig_support.update_layout(
+                height=220,
+                margin=dict(t=30, l=5, r=5, b=70),  # more space under chart
+                legend_orientation='h',
+                legend_y=-0.3,
+                legend_font=dict(size=10),
+                legend_title_text="",
+                xaxis_title=None,
+                xaxis=dict(
+                    tickfont=dict(size=10),
+                    tickangle=0
+                )
+            )
+            
+            st.plotly_chart(fig_support, use_container_width=True)
+            
+
         with col_layer1b:
             #st.markdown("###### 📈 Ticket Status Distribution")
             st.markdown("<h6 style='text-align: center; font-size: 10px; margin-bottom: 6px;'>📈 Ticket Status Distribution </h6>", unsafe_allow_html=True)
-            fig2 = px.bar(df_status, x='FOM', y='count', color='status', barmode='stack')
+            fig2 = px.bar(df_status, x='FOM', y='count', color='status', barmode='stack')            
             fig2.update_layout(
-                legend=dict(orientation='h', y=-0.3, font=dict(size=8)),
                 height=200,
-                margin=dict(l=5, r=5, t=30, b=10)
+                margin=dict(t=30, l=5, r=5, b=70),
+                legend_orientation='h',
+                legend_y=-0.3,
+                legend_font=dict(size=10),
+                legend_title_text="",
+                xaxis_title=None,
+                xaxis=dict(
+                    tickfont=dict(size=10),
+                    tickangle=0
+                )
             )
             st.plotly_chart(fig2, use_container_width=True)
-        
+            
         st.markdown("---")
         # Layer 2
+        col_layer3a, col_layer3b = st.columns(2)
+        with col_layer3a:
+            #st.markdown("###### 📊 Response Time ")
+            st.markdown("<h6 style='text-align: center; font-size: 12px; margin-bottom: 6px;'>📊 Response Time </h6>", unsafe_allow_html=True)
+    
+            st.plotly_chart(px.box(df_tickets_viz_raw, x='FOM', y='response_time').update_layout(height=200, margin=dict(l=10, r=10, t=30, b=10)), use_container_width=True,xaxis_title=None)
+        with col_layer3b:
+            #st.markdown("###### 📊 Resolution Time ")
+            st.markdown("<h6 style='text-align: center; font-size: 12px; margin-bottom: 6px;'>📊 Resolution Time  </h6>", unsafe_allow_html=True)
+    
+            st.plotly_chart(px.box(df_tickets_viz_raw.dropna(subset=['resolution_time']), x='FOM', y='resolution_time').update_layout(height=200, margin=dict(l=10, r=10, t=30, b=10)), use_container_width=True,xaxis_title=None)
+
+        st.markdown("---")
+        # Layer 3
         col_layer2a, col_layer2b, col_layer2c = st.columns(3)
         with col_layer2a:
              #st.markdown("###### 📈 Support Health Distribution")
@@ -243,20 +283,8 @@ def show():
                     issue_df = pd.DataFrame({"Issue": [f"Issue {i}" for i in range(1, 5)], "Count": issue_counts})
                     st.plotly_chart(px.treemap(issue_df, path=[px.Constant("All Issues"), "Issue"], values="Count").update_layout(height=140, margin=dict(l=10, r=10, t=30, b=10)), use_container_width=True)
                
-    
-        st.markdown("---")
-        # Layer 3
-        col_layer3a, col_layer3b = st.columns(2)
-        with col_layer3a:
-            #st.markdown("###### 📊 Response Time ")
-            st.markdown("<h6 style='text-align: center; font-size: 12px; margin-bottom: 6px;'>📊 Response Time </h6>", unsafe_allow_html=True)
-    
-            st.plotly_chart(px.box(df_tickets_viz_raw, x='FOM', y='response_time').update_layout(height=200, margin=dict(l=10, r=10, t=30, b=10)), use_container_width=True)
-        with col_layer3b:
-            #st.markdown("###### 📊 Resolution Time ")
-            st.markdown("<h6 style='text-align: center; font-size: 12px; margin-bottom: 6px;'>📊 Resolution Time  </h6>", unsafe_allow_html=True)
-    
-            st.plotly_chart(px.box(df_tickets_viz_raw.dropna(subset=['resolution_time']), x='FOM', y='resolution_time').update_layout(height=200, margin=dict(l=10, r=10, t=30, b=10)), use_container_width=True)
+
+
 
 if __name__ == "__main__":
     show()
