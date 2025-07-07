@@ -183,7 +183,7 @@ def show():
     with main_right:
         st.markdown("##### ✨Visual Insights")
         col1, col2 = st.columns(2)
-     ======
+   
         with col1:
             fig1_df = df[df['FOM'] <= selected_fom_dt].melt(
                 id_vars='FOM_str',
