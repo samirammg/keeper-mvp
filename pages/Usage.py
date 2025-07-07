@@ -173,6 +173,7 @@ def show():
                 legend_y=-0.3,
                 legend_font=dict(size=10),
                 legend_title_text="",  # removes "variable" or legend title
+                xaxis_title=None,
                 xaxis=dict(
                     tickfont=dict(size=10),
                     tickangle=0  # Set -45 if x-labels are crowded
@@ -191,12 +192,12 @@ def show():
                 legend_y=-0.3,
                 legend_font=dict(size=10),
                 legend_title_text="",  # removes "variable"
+                xaxis_title=None,
                 xaxis=dict(
                     tickfont=dict(size=10),
                     tickangle=0  # or -45 if needed
                 )
             )
-
             st.plotly_chart(fig2, use_container_width=True)
     
         # Layer 2
@@ -208,7 +209,20 @@ def show():
                 names=["Healthy", "Normal", "Risky"],
                 values=[selected_row["label_pct_healthy"], selected_row["label_pct_normal"], selected_row["label_pct_risky"]]
             )
-            fig3.update_layout(height=220, margin=dict(t=30, l=10, r=10, b=10))
+            #fig3.update_layout(height=220, margin=dict(t=30, l=10, r=10, b=10))
+            fig3.update_layout(
+                height=220,
+                margin=dict(t=30, l=10, r=10, b=70),
+                legend_orientation='h',
+                legend_y=-0.3,
+                legend_font=dict(size=10),
+                legend_title_text="",
+                xaxis_title=None,  # Included for consistency
+                showlegend=True
+            )
+            
+            fig3.update_traces(textinfo='label+percent',textposition='inside',insidetextorientation='auto')
+
             st.plotly_chart(fig3, use_container_width=True)
     
         with col4:
@@ -229,13 +243,13 @@ def show():
         with col5:
             st.markdown("<h6 style='text-align: center;'>📊 Frequency Distribution (Last 12 Months)</h6>", unsafe_allow_html=True)
             fig5 = px.box(raw_12mo, x="FOM_str", y="usage_frequency", points="outliers")
-            fig5.update_layout(height=240, margin=dict(t=30, l=10, r=10, b=10))
+            fig5.update_layout(height=240, margin=dict(t=30, l=10, r=10, b=10),xaxis_title=None)
             st.plotly_chart(fig5, use_container_width=True)
         
         with col6:
             st.markdown("<h6 style='text-align: center;'>📊 Recency Distribution (Last 12 Months)</h6>", unsafe_allow_html=True)
             fig6 = px.box(raw_12mo, x="FOM_str", y="usage_recency_d", points="outliers")
-            fig6.update_layout(height=240, margin=dict(t=30, l=10, r=10, b=10))
+            fig6.update_layout(height=240, margin=dict(t=30, l=10, r=10, b=10),xaxis_title=None)
             st.plotly_chart(fig6, use_container_width=True)
     
 if __name__ == "__main__":
