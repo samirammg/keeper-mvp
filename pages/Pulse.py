@@ -215,7 +215,7 @@ def show():
                           title='⏳ Stage Trends Over Time',
                           color_discrete_map={"risky": c_risky, "adoption": c_adoption, "expansion": c_expansion, "renewal": c_renew})
             fig2.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500,
-                              legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5, font=dict(size=10)))
+                              legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5, font=dict(size=6)))
             st.plotly_chart(fig2, use_container_width=True)
         
         with fig_row1_col2:
@@ -236,7 +236,7 @@ def show():
                                 title='📈 Number of Contracts by MOC',
                                 color_discrete_map={"risky": c_risky, "adoption": c_adoption, "expansion":c_expansion, "renewal": c_renew})
             fig4.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500, 
-                              legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5, font=dict(size=10)))
+                              legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5, font=dict(size=6)))
             st.plotly_chart(fig4, use_container_width=True)
     
         with fig_row2_col2:
@@ -260,16 +260,9 @@ def show():
                 """, unsafe_allow_html=True)
        
         with chat_col2:
-            st.markdown("###### 🤖 Ask Keeper")
-            st.markdown("""
-                <style>
-                textarea {
-                    font-size: 12px !important;
-                }
-                </style>
-            """, unsafe_allow_html=True)
             default_q = "Why Pulse of company 1 is risky?"
-            user_input = st.text_area(label="", value=default_q, height=100,label_visibility="collapsed")
+            st.markdown("###### 🤖 Ask Keeper", unsafe_allow_html=True)
+            user_input = st.text_area("", value=default_q, height=100)
             
             if st.button("Ask Keeper"):
                 st.info("""
