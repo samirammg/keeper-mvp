@@ -222,12 +222,42 @@ def show():
             #st.markdown("###### 📊 Response Time ")
             st.markdown("<h6 style='text-align: center; font-size: 12px; margin-bottom: 6px;'>📊 Response Time </h6>", unsafe_allow_html=True)
     
-            st.plotly_chart(px.box(df_tickets_viz_raw, x='FOM', y='response_time').update_layout(height=200, margin=dict(l=10, r=10, t=30, b=10)), use_container_width=True,xaxis_title=None)
+            #st.plotly_chart(px.box(df_tickets_viz_raw, x='FOM', y='response_time').update_layout(height=200, margin=dict(l=10, r=10, t=30, b=10)), use_container_width=True,xaxis_title=None)
+            fig_response_time = px.box(df_tickets_viz_raw, x='FOM', y='response_time')
+
+            fig_response_time.update_layout(
+                height=200,
+                margin=dict(t=30, l=10, r=10, b=70),
+                xaxis_title=None,
+                legend_orientation='h',
+                legend_y=-0.3,
+                legend_font=dict(size=10),
+                legend_title_text="",
+                xaxis=dict(tickfont=dict(size=10))
+            )
+            
+            st.plotly_chart(fig_response_time, use_container_width=True)
+
+        
         with col_layer3b:
             #st.markdown("###### 📊 Resolution Time ")
             st.markdown("<h6 style='text-align: center; font-size: 12px; margin-bottom: 6px;'>📊 Resolution Time  </h6>", unsafe_allow_html=True)
     
-            st.plotly_chart(px.box(df_tickets_viz_raw.dropna(subset=['resolution_time']), x='FOM', y='resolution_time').update_layout(height=200, margin=dict(l=10, r=10, t=30, b=10)), use_container_width=True,xaxis_title=None)
+            #st.plotly_chart(px.box(df_tickets_viz_raw.dropna(subset=['resolution_time']), x='FOM', y='resolution_time').update_layout(height=200, margin=dict(l=10, r=10, t=30, b=10)), use_container_width=True,xaxis_title=None)
+            fig_resolution_time = px.box(df_tickets_viz_raw.dropna(subset=['resolution_time']),x='FOM',y='resolution_time')
+
+            fig_resolution_time.update_layout(
+                height=200,
+                margin=dict(t=30, l=10, r=10, b=70),
+                xaxis_title=None,
+                legend_orientation='h',
+                legend_y=-0.3,
+                legend_font=dict(size=10),
+                legend_title_text="",
+                xaxis=dict(tickfont=dict(size=10))
+            )
+            
+            st.plotly_chart(fig_resolution_time, use_container_width=True)
 
         st.markdown("---")
         # Layer 3
