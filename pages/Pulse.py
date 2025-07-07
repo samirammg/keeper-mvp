@@ -95,17 +95,16 @@ def show():
             arrow = "🔺+" if delta >= 0 else "🔻-"
             delta_str = f"<p style=\"color:gray; font-size: 10px; margin:0\">{arrow} {abs(delta):.1f}% from last period</p>"
         return f"""
-        <div style="border:1px solid #e0e0e0; padding:7px; border-radius:8px; background-color:#f9f9f9; width: 100%; margin-bottom:7px">
-            <h6 style="margin-bottom:0">{title}</h6>
-            <p style="font-size: 25px; font-weight: bold; margin:3px 0">{value}</p>
+        <div style="border:1px solid #e0e0e0; padding:5px; border-radius:6px; background-color:#f9f9f9; width: 100%; margin-bottom:5px">
+            <h6 style="margin-bottom:0">{title}</h8>
+            <p style="font-size: 20px; font-weight: bold; margin:3px 0">{value}</p>
             {delta_str}
         </div>
         """
     
     # --- Page Header ---
     
-    
-    #st.markdown("##### 🔍 Post Sales Stages")
+   
     
     # --- Display Cards ---
     # Top row = classification counts
