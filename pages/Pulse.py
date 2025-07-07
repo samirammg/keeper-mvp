@@ -130,7 +130,7 @@ def show():
     
 
     # --- New Layout: Left with fig1, chatbot & table | Right with all other figs ---
-    left_col, right_col = st.columns([1.6, 1.4])
+    left_col, right_col = st.columns([1,1])
     
     with left_col:
         # --- FIGURE 1: Stage Distribution (left) ---
@@ -153,27 +153,7 @@ def show():
         # --- Chat + Alert System (left) ---
         
         
-        chat_col1, chat_col2 = st.columns([2,1])
-        
-        with chat_col1:
-            st.markdown("##### 🚨 Alert System for Emerging Risks")
-            with st.container(border=True):
-                st.markdown("""
-                - **5 enterprise customers** are at high churn risk due to declining product usage. **Immediate action recommended.**
-                - Your **top 10 highest-value customers** are engaging less — consider reaching out.
-                """)
-        
-        with chat_col2:
-            #st.markdown("##### 🤖 Ask Keeper")
-            default_q = "Why Pulse of company 1 is risky?"
-            user_input = st.text_area("##### 🤖 Ask Keeper", value=default_q, height=100)
-            if st.button("Ask Keeper"):
-                st.info("""
-        ❌ Declining product usage (↓40% in last 2 months)  
-        ❌ Unresolved support tickets (3 high-priority issues open for 30+ days)  
-        ❌ Low CSM engagement (No touchpoints in last 60 days)  
-        👉 **Suggested Action**: Schedule a recovery call & offer an incentive to stay engaged.
-                """)
+       
     
         
         # --- Table (left) ---
@@ -223,7 +203,7 @@ def show():
     
     with right_col:
         # --- First Row: FIG 1 and FIG 6 ---
-        fig_row1_col1, fig_row1_col2 = st.columns(2)
+        fig_row1_col1, fig_row1_col2 = st.columns([2,1])
     
         with fig_row1_col1:
             #st.markdown("#### ⏳ Stage Trends: Contracts Over Time")
@@ -234,10 +214,15 @@ def show():
             fig2 = px.bar(df_score_c_melted, x='FOM_str', y='count', color='stage', barmode='stack',
                           title='⏳ Stage Trends Over Time',
                           color_discrete_map={"risky": c_risky, "adoption": c_adoption, "expansion": c_expansion, "renewal": c_renew})
-            fig2.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500)
+            fig2.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500,
+                              legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5))
             st.plotly_chart(fig2, use_container_width=True)
     
-    
+
+
+st.plotly_chart(fig2, use_container_width=True)
+
+        
         with fig_row1_col2:
             #st.markdown("#### 🗺️ Industry for Risky Customers")
             risky_fom = df_fom[df_fom['stage'] == 'risky']
@@ -248,7 +233,7 @@ def show():
             st.plotly_chart(fig3, use_container_width=True)
     
         # --- Second Row: FIG 2 and FIG 5 ---
-        fig_row2_col1, fig_row2_col2 = st.columns(2)
+        fig_row2_col1, fig_row2_col2 = st.columns([2,1])
     
         with fig_row2_col1:
             #st.markdown("#### 📈 Contracts by MOC")
@@ -264,6 +249,26 @@ def show():
             fig5 = px.pie(risky_fom, names='business_size', title='🧩Business Size Breakdown of Risky Customers',
                           color_discrete_sequence=[c_risky])
             st.plotly_chart(fig5, use_container_width=True)
+
+        chat_col1, chat_col2 = st.columns([2,1])  
+        with chat_col1:
+            st.markdown("##### 🚨 Alert System for Emerging Risks")
+            with st.container(border=True):
+                st.markdown("""
+                - **5 enterprise customers** are at high churn risk due to declining product usage. **Immediate action recommended.**
+                - Your **top 10 highest-value customers** are engaging less — consider reaching out.
+                """)        
+        with chat_col2:
+            #st.markdown("##### 🤖 Ask Keeper")
+            default_q = "Why Pulse of company 1 is risky?"
+            user_input = st.text_area("##### 🤖 Ask Keeper", value=default_q, height=100)
+            if st.button("Ask Keeper"):
+                st.info("""
+        ❌ Declining product usage (↓40% in last 2 months)  
+        ❌ Unresolved support tickets (3 high-priority issues open for 30+ days)  
+        ❌ Low CSM engagement (No touchpoints in last 60 days)  
+        👉 **Suggested Action**: Schedule a recovery call & offer an incentive to stay engaged.
+                """)
     
     st.markdown("---")
     
