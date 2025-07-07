@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 
-def show_navigation(_=None):  # The input is ignored
+def show_navigation(_=None):
     current_page = os.path.splitext(os.path.basename(__file__))[0]
 
     # Page name → label mapping
@@ -27,6 +27,6 @@ def show_navigation(_=None):  # The input is ignored
 
     if selected != f"Stay on {current_label}":
         # Reverse map: label → filename
-        target_page = next((k for k, v in other_pages.items() if v == selected), None)
-        if target_page:
-            st.switch_page(target_page)
+        target_file = next((k for k, v in other_pages.items() if v == selected), None)
+        if target_file:
+            st.switch_page(other_pages[target_file])  # now using the actual label
