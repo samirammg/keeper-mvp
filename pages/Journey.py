@@ -352,12 +352,12 @@ def show():
 
                     # Remove broken filtering logic
                     # Instead, directly validate column existence below
+
                 story_df.columns = story_df.columns.str.strip().str.lower()
+
                 if 'account_name' in story_df.columns:
-                story_df['account_name'] = story_df['account_name'].astype(str)
-                        
-                story_row = story_df[story_df['account_name'] == str(selected_account_id)] if not story_df.empty else pd.DataFrame()
-                        
+                    story_df['account_name'] = story_df['account_name'].astype(str)
+                    story_row = story_df[story_df['account_name'] == str(selected_account_id)] if not story_df.empty else pd.DataFrame()
                 else:
                     story_row = pd.DataFrame()
 
