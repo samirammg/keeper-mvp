@@ -217,19 +217,22 @@ def show():
         st.markdown("", unsafe_allow_html=True)
         st.markdown("""
             <div style="background-color: #FFF6D1; border-left: 6px solid #ffc107; padding: 16px; margin-bottom: 20px; border-radius: 6px;">
-                <h4 style="margin-top: 0;">🧠 Action Recommend</h4>
-                <ul style="padding-left: 20px; margin: 0;">
+                <h4 style="margin-top: 0;font-size: 14px;">🧠 Action Recommend</h4>
+                <ul style="padding-left: 20px; margin: 0;font-size: 14px;">
                     <li>If churn is reduced by <strong>X%</strong>, ARR will increase by <strong>$Y M</strong></li>
                     <li>Upsell engagement is below industry average. Consider targeting <strong>Segment A</strong> for expansion.</li>
                     <li>High-risk customers identified: <a href="#">View full list</a></li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
-    
+
+
+
+        
         st.markdown("""
                 <div style="background-color: #D5D5D5; border-left: 6px solid #dc3545; padding: 16px; margin-bottom: 20px; border-radius: 6px;">
-                <h4 style="margin-top: 0;">🚨 Risk Alert System</h4>
-                <ul style="padding-left: 20px; margin: 0;">
+                <h4 style="margin-top: 0;font-size: 14px;">🚨 Risk Alert System</h4>
+                <ul style="padding-left: 20px; margin: 0;font-size: 14px;">
                     <li><strong>High Risk:</strong> Churn increasing in Mid-Market customers (<em>-X% engagement</em>).</li>
                     <li><strong>Medium Risk:</strong> Support tickets rising in Enterprise accounts (Potential renewal risk).</li>
                     <li><strong>Low Risk:</strong> Feature adoption lagging in new customers (May affect long-term retention).</li>
@@ -241,8 +244,8 @@ def show():
     
         st.markdown("""
             <div style="background-color: #EBECED; border-left: 6px solid #6c757d; padding: 16px; margin-bottom: 20px; border-radius: 6px;">
-                <h4 style="margin-top: 0;">🔧 Custom Alerts & Thresholds</h4>
-                <ul style="padding-left: 20px; margin: 0;">
+                <h4 style="margin-top: 0;font-size: 14px;">🔧 Custom Alerts & Thresholds</h4>
+                <ul style="padding-left: 20px; margin: 0;font-size: 14px;">
                     <li><strong>Churn threshold:</strong> e.g., Alert me if churn exceeds <strong>X%</strong></li>
                     <li><strong>Support escalations:</strong> e.g., Alert me if support tickets increase <strong>Y%</strong></li>
                     <li><strong>Feature adoption levels:</strong> e.g., Alert me if adoption drops below <strong>Z%</strong></li>
@@ -251,7 +254,7 @@ def show():
         """, unsafe_allow_html=True)
         st.markdown("""
         <div style="background-color: #EBF5F9; border-left: 6px solid #0d6efd; padding: 16px; border-radius: 6px; margin-bottom: 20px;">
-            <h4 style="margin-top: 0;">📊 Industry Benchmarking & Competitive Insights</h4>
+            <h4 style="margin-top: 0;font-size: 14px;">📊 Industry Benchmarking & Competitive Insights</h4>
             <table style="width: 100%; font-size: 13px;">
                 <tr style="font-weight: bold;">
                     <td>Metric</td>
@@ -270,8 +273,8 @@ def show():
     
         st.markdown("""
             <div style="background-color: #d1ecf1; border-left: 6px solid #C5DBED; padding: 16px; margin-bottom: 20px; border-radius: 6px;">
-                <h4 style="margin-top: 0;">📊 AI-Generated Competitive Insights</h4>
-                <ul style="padding-left: 20px; margin: 0;">
+                <h4 style="margin-top: 0;font-size: 14px;">📊 AI-Generated Competitive Insights</h4>
+                <ul style="padding-left: 20px; margin: 0;font-size: 14px;">
                     <li>Your churn rate is <strong>X%</strong> higher than the industry average. Consider retention-focused initiatives.</li>
                     <li>Your upsell rate is leading the market by <strong>Y%</strong>. Explore doubling down on expansion strategies.</li>
                     <li>Your customer acquisition growth is lagging by <strong>Z%</strong>. Evaluate sales conversion strategies.</li>
@@ -285,9 +288,9 @@ def show():
                 st.image("data/SD.jpg", caption="Strategic Dimensions of Customer Dynamics", width=400)
         
             st.markdown("""
-                <div style="background-color: #f4f4f4; padding: 12px; border-radius: 6px; border-left: 5px solid #0d6efd; margin-top: 10px;">
+                <div style="background-color: #f4f4f4; padding: 12px; border-radius: 6px; border-left: 5px solid #0d6efd; margin-top: 10px;font-size: 14px;">
                     <strong>Insight Box:</strong><br>
-                    <ul style="margin-top: 8px;">
+                    <ul style="margin-top: 8px;font-size: 14px;">
                         <li><strong>Exponential Growth</strong>: Healthy acceleration. Ensure support systems can scale.</li>
                         <li><strong>Goal Seeking</strong>: Stabilization toward a limit. Revisit targets or constraints.</li>
                         <li><strong>S-Shaped Growth</strong>: Maturity approaching. Time for expansion strategy.</li>
@@ -306,7 +309,7 @@ def show():
             st.markdown("## Trend Analysis & Future Projection")
             st.markdown(f"""
                 <div style="border: 2px solid #888; padding: 20px; border-radius: 8px; background-color: #FFFFFF;">
-                    <table style="width: 100%; border-collapse: collapse;">
+                    <table style="width: 100%; border-collapse: collapse;font-size: 14px;">
                         <tr><td style="padding: 6px 12px; font-weight: 600;">Projected ARR (Next 6 months)</td><td>$ {prj_acv:.1f}</td></tr>
                         <tr><td style="padding: 6px 12px; font-weight: 600;">Projected Churn Impact</td><td>If churn continues at {prj_churn_rate:.0%}, ARR loss will be $ {prj_lose_acv:.1f}</td></tr>
                         <tr><td style="padding: 6px 12px; font-weight: 600;">Expected Upsell Growth</td><td>Potential revenue increase of $ {prj_up_acv:.1f}</td></tr>
