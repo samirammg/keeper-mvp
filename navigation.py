@@ -17,10 +17,10 @@ def show_navigation(current_label):
 
     # Create list of options excluding the current page
     other_labels = [label for label in menu_labels if label != current_label]
-    options = [f"📘 Stay on {current_label}"] + other_labels
+    options = [f"Stay on {current_label}"] + other_labels
 
     selected = st.selectbox("", options, label_visibility="collapsed")
 
-    if selected != f"📘 Stay on {current_label}":
+    if selected != f"Stay on {current_label}":
         target_file = menu_labels[selected]
         st.switch_page(target_file)
