@@ -203,7 +203,7 @@ def show():
     
     with right_col:
         # --- First Row: FIG 1 and FIG 6 ---
-        fig_row1_col1, fig_row1_col2 = st.columns([2,1])
+        fig_row1_col1, fig_row1_col2 = st.columns([1.5,1])
     
         with fig_row1_col1:
             #st.markdown("#### ⏳ Stage Trends: Contracts Over Time")
@@ -214,7 +214,7 @@ def show():
             fig2 = px.bar(df_score_c_melted, x='FOM_str', y='count', color='stage', barmode='stack',
                           title='⏳ Stage Trends Over Time',
                           color_discrete_map={"risky": c_risky, "adoption": c_adoption, "expansion": c_expansion, "renewal": c_renew})
-            fig2.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500,
+            fig2.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500, height=300,
                               legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5))
             st.plotly_chart(fig2, use_container_width=True)
         
@@ -235,7 +235,8 @@ def show():
             fig4 = px.histogram(df_fom, x='MOC', color='stage', barmode='stack',
                                 title='📈 Number of Contracts by MOC',
                                 color_discrete_map={"risky": c_risky, "adoption": c_adoption, "expansion":c_expansion, "renewal": c_renew})
-            fig4.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500)
+            fig4.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500, height=300,
+                              legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5))
             st.plotly_chart(fig4, use_container_width=True)
     
         with fig_row2_col2:
@@ -247,14 +248,19 @@ def show():
 
         chat_col1, chat_col2 = st.columns([2,1])  
         with chat_col1:
-            st.markdown("##### 🚨 Alert System for Emerging Risks")
+            st.markdown("#### 🚨 Alert System for Emerging Risks")
             with st.container(border=True):
                 st.markdown("""
-                - **5 enterprise customers** are at high churn risk due to declining product usage. **Immediate action recommended.**
-                - Your **top 10 highest-value customers** are engaging less — consider reaching out.
-                """)        
+                <div style="font-size: 14px;">
+                    <ul>
+                        <li><strong>5 enterprise customers</strong> are at high churn risk due to declining product usage. <strong>Immediate action recommended.</strong></li>
+                        <li>Your <strong>top 10 highest-value customers</strong> are engaging less — consider reaching out.</li>
+                    </ul>
+                </div>
+                """, unsafe_allow_html=True)
+       
         with chat_col2:
-            #st.markdown("##### 🤖 Ask Keeper")
+            #st.markdown("#### 🤖 Ask Keeper")
             default_q = "Why Pulse of company 1 is risky?"
             user_input = st.text_area("##### 🤖 Ask Keeper", value=default_q, height=100)
             if st.button("Ask Keeper"):
