@@ -329,9 +329,7 @@ def show():
                 ax5.set_axis_off()
                 ax5.set_ylim(0, 1)
                 a5=angle
-                import math
-                
-                
+                import math                
                 gauge_cols = st.columns(3)
                 with gauge_cols[0]:
                     st.pyplot(fig3)
@@ -342,24 +340,21 @@ def show():
                  # --- Display Image ---
                 
                 st.image("data/net.png.png", use_container_width=True)
-           
-                with col_left:
-                    st.markdown("<h4 style='margin-top: 40px;'>💬 Ask Keeper</h4>", unsafe_allow_html=True)
 
-                    story_df = pd.read_csv("data/6_customer_journey_story.csv", encoding='ISO-8859-1')
-                    story_df.columns = story_df.columns.str.strip().str.lower()
-                    story_df['account_name'] = story_df['account_name'].astype(str)
-
-
-
-
-                    if 'account_name' in story_df.columns:
-                        story_df['account_name'] = story_df['account_name'].astype(str)
-                        story_row = story_df[story_df['account_name'] == str(selected_account_id)] if not story_df.empty else pd.DataFrame()
-                    else:
-                        story_row = pd.DataFrame()
-
+                #with col_right:
+                st.markdown("<h4 style='margin-top: 40px;'>💬 Ask Keeper</h4>", unsafe_allow_html=True)
+            
+                story_df = pd.read_csv("data/6_customer_journey_story.csv", encoding='ISO-8859-1')
+                story_df.columns = story_df.columns.str.strip().str.lower()
+                story_df['account_name'] = story_df['account_name'].astype(str)
+            
+                if 'account_name' in story_df.columns:
+                    story_row = story_df[story_df['account_name'] == str(selected_account_id)] if not story_df.empty else pd.DataFrame()
+                else:
+                    story_row = pd.DataFrame()
+            
                 default_question = "Customer engagement is 25% lower than similar accounts, how can we improve their engagement?"
+
                 with col_left:
                     if not story_row.empty:
                         story_row = story_row.iloc[0]
