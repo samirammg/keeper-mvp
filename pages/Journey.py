@@ -374,16 +374,16 @@ def show():
                         st.markdown(f"""
                         <h3 style='margin-top: 30px;'>🧠 Generative Insight</h3>
                         <div style='display: flex; flex-direction: column; gap: 20px;'>
-                        <div style='flex: 1; padding: 15px; border: 1px solid #d3d3d3; border-radius: 10px;'>
-                        <h4>Summary of Account</h4>
+                        <div style='flex: 1; padding: 12px; border: 1px solid #d3d3d3; border-radius: 10px;'>
+                        <h6>Summary of Account</h6>
                         <p>{story_row.get('summary of account', '')}</p>
                         </div>
-                        <div style='flex: 1; padding: 15px; border: 1px solid #d3d3d3; border-radius: 10px;'>
-                            <h4>Highlights of Activities</h4>
+                        <div style='flex: 1; padding: 12px; border: 1px solid #d3d3d3; border-radius: 10px;'>
+                            <h6>Highlights of Activities</h6>
                             <p>{story_row.get('highlights of activities', '')}</p>
                         </div>
-                        <div style='flex: 1; padding: 15px; border: 1px solid #d3d3d3; border-radius: 10px;'>
-                            <h4>Actionable Insights & Next Steps</h4>
+                        <div style='flex: 1; padding: 12px; border: 1px solid #d3d3d3; border-radius: 10px;'>
+                            <h6>Actionable Insights & Next Steps</h6>
                             <ul>
                                 <li><strong>{story_row.get('recommendation_1', '')}</strong>
                                     <ul>
@@ -417,21 +417,21 @@ def show():
                         st.markdown("""
                         <h3 style='margin-top: 30px;'>🧠 Generative Insight</h3>
                         <div style='display: flex; flex-direction: column; gap: 20px;'>
-                        <div style='flex: 1; padding: 15px; border: 1px solid #d3d3d3; border-radius: 10px;'>
-                        <h4>Summary of Account</h4>
+                        <div style='flex: 1; padding: 12px; border: 1px solid #d3d3d3; border-radius: 10px;'>
+                        <h6>Summary of Account</h6>
                         <p>This customer is a small business in the software and technology industry, with an annual revenue of $22,200,000.
                         They hold a small-sized contract, currently using only 1 out of 5 available products. Their contract history includes two 12-month renewals—the first at the same price and the second with an upsell.
                         They are now 8 months into their third contract (67% progress).</p>
                         </div>
-                        <div style='flex: 1; padding: 15px; border: 1px solid #d3d3d3; border-radius: 10px;'>
-                            <h4>Highlights of Activities</h4>
+                        <div style='flex: 1; padding: 12px; border: 1px solid #d3d3d3; border-radius: 10px;'>
+                            <h6>Highlights of Activities</h6>
                             <p>Ann, the assigned CSM, has conducted regular monthly check-ins for the past eight months (~30 minutes each).
                             However, the latest call lasted 90 minutes, focusing on training and new dashboard features, with positive sentiment.<br>
                             Despite this engagement, product usage has declined by 27% and credit consumption has dropped 46% over the last three months.
                             This signals potential disengagement or workflow changes that need to be explored.</p>
                         </div>
-                        <div style='flex: 1; padding: 15px; border: 1px solid #d3d3d3; border-radius: 10px;'>
-                            <h4>Actionable Insights & Next Steps</h4>
+                        <div style='flex: 1; padding: 12px; border: 1px solid #d3d3d3; border-radius: 10px;'>
+                            <h6>Actionable Insights & Next Steps</h6>
                             <ul>
                                 <li><strong>Address Usage Decline</strong>
                                     <ul>
