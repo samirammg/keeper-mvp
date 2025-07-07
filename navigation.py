@@ -1,37 +1,32 @@
 import streamlit as st
+import os
 
-def show_navigation(current_label):
-    menu_labels = {
-        "📘 Customer Pulse": "Journey",
-        "🧩 Keeper Pulse": "Pulse",
-        "💓 Growth Pulse": "GrowthPulse",
-        "🩺 Team Pulse": "TeamPulse",
-        "↳  📌 CSM Activity": "Activity",
-        "↳  💬 Support Trends": "Support",
-        "↳  📊 Product Usage": "Usage",
-        "📈 Vision Pulse": "VisionPulse",
-        "↳  🧭 Strategy": "Strategy",
-        "🚀 Keeper Agents": "agent",
-        "🗄️ Keeper Data": "onbording"
+def show_navigation(_=None):  # The input is ignored
+    current_page = os.path.splitext(os.path.basename(__file__))[0]
+
+    # Page name → label mapping
+    page_labels = {
+        "Journey": "📘 Customer Pulse",
+        "Pulse": "🧩 Keeper Pulse",
+        "GrowthPulse": "💓 Growth Pulse",
+        "TeamPulse": "🩺 Team Pulse",
+        "Activity": "↳  📌 CSM Activity",
+        "Support": "↳  💬 Support Trends",
+        "Usage": "↳  📊 Product Usage",
+        "VisionPulse": "📈 Vision Pulse",
+        "Strategy": "↳  🧭 Strategy",
+        "agent": "🚀 Keeper Agents",
+        "onbording": "🗄️ Keeper Data"
     }
 
-    # Fallback if current_label not found
-    if current_label not in menu_labels:
-        st.warning(f"⚠️ Navigation label '{current_label}' not found.")
-        return
+    current_label = page_labels.get(current_page, f"{current_page}")
+    other_pages = {k: v for k, v in page_labels.items() if k != current_page}
 
-    # Build the menu, removing the current label
-    other_labels = [label for label in menu_labels if label != current_label]
-    options = [f"Stay on {current_label}"] + other_labels
-
+    options = [f"Stay on {current_label}"] + list(other_pages.values())
     selected = st.selectbox("", options, label_visibility="collapsed")
 
     if selected != f"Stay on {current_label}":
-        target_file = menu_labels.get(selected)
-        if target_file:
-            try:
-                st.switch_page(target_file)
-            except Exception as e:
-                st.error(f"❌ Failed to navigate to `{target_file}`. Make sure the file is in `/pages/` and the name matches exactly.\n\nError: {e}")
-        else:
-            st.error("❌ Selected navigation target is missing.")
+        # Reverse map: label → filename
+        target_page = next((k for k, v in other_pages.items() if v == selected), None)
+        if target_page:
+            st.switch_page(target_page)
