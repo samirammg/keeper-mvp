@@ -203,7 +203,7 @@ def show():
     
     with right_col:
         # --- First Row: FIG 1 and FIG 6 ---
-        fig_row1_col1, fig_row1_col2 = st.columns([1.5,1])
+        fig_row1_col1, fig_row1_col2 = st.columns([1.8,1])
     
         with fig_row1_col1:
             #st.markdown("#### ⏳ Stage Trends: Contracts Over Time")
@@ -214,7 +214,7 @@ def show():
             fig2 = px.bar(df_score_c_melted, x='FOM_str', y='count', color='stage', barmode='stack',
                           title='⏳ Stage Trends Over Time',
                           color_discrete_map={"risky": c_risky, "adoption": c_adoption, "expansion": c_expansion, "renewal": c_renew})
-            fig2.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500)
+            fig2.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500,showlegend=False )
                              # legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5, font=dict(size=6)))
             st.plotly_chart(fig2, use_container_width=True)
         
@@ -228,14 +228,14 @@ def show():
             st.plotly_chart(fig3, use_container_width=True)
     
         # --- Second Row: FIG 2 and FIG 5 ---
-        fig_row2_col1, fig_row2_col2 = st.columns([1.5,1])
+        fig_row2_col1, fig_row2_col2 = st.columns([1.8,1])
     
         with fig_row2_col1:
             #st.markdown("#### 📈 Contracts by MOC")
             fig4 = px.histogram(df_fom, x='MOC', color='stage', barmode='stack',
                                 title='📈 Number of Contracts by MOC',
                                 color_discrete_map={"risky": c_risky, "adoption": c_adoption, "expansion":c_expansion, "renewal": c_renew})
-            fig4.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500)
+            fig4.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500,showlegend=False )
                              # legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5, font=dict(size=6)))
             st.plotly_chart(fig4, use_container_width=True)
     
@@ -246,7 +246,7 @@ def show():
                           color_discrete_sequence=[c_risky])
             st.plotly_chart(fig5, use_container_width=True)
 
-        chat_col1, chat_col2 = st.columns([1.5,1])  
+        chat_col1, chat_col2 = st.columns([1.8,1])  
         with chat_col1:
             st.markdown("###### 🚨 Alert System for Emerging Risks")
             with st.container(border=True):
@@ -262,8 +262,6 @@ def show():
         with chat_col2:
 
             default_q = "Why Pulse of company 1 is risky?"
-            
-            # Inject custom CSS to reduce font size inside text area
             st.markdown("""
                 <style>
                 textarea {
@@ -271,10 +269,8 @@ def show():
                 }
                 </style>
             """, unsafe_allow_html=True)
-            
-            # Ask Keeper UI
-            st.markdown("###### 🤖 Ask Keeper", unsafe_allow_html=True)
-            user_input = st.text_area("", value=default_q, height=100)
+
+            user_input = st.text_area("#### 🤖 Ask Keeper", value=default_q, height=100)
 
             if st.button("Ask Keeper"):
                 st.info("""
