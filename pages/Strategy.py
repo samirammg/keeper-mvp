@@ -283,11 +283,11 @@ def show():
                 </ul>
             </div>
             """, unsafe_allow_html=True)
-        with st.expander("📷 Show Strategic Insight Image"):
-            col_img_center = st.columns([1, 2, 1])  # centers the image
+        with st.expander("📷 Show Strategic Insight"):
+            #col_img_center = st.columns([1, 2, 1])  # centers the image
         
-            with col_img_center[1]:
-                st.image("data/SD.jpg", caption="Strategic Dimensions of Customer Dynamics", width=400)
+            #with col_img_center[1]:
+            st.image("data/SD.jpg", caption="Strategic Dimensions of Customer Dynamics", width=400)
         
             st.markdown("""
                 <div style="background-color: #f4f4f4; padding: 12px; border-radius: 6px; border-left: 5px solid #0d6efd; margin-top: 10px;font-size: 10px;">
