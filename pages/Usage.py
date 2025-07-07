@@ -121,7 +121,7 @@ def show():
     st.markdown("---")
     
     # --- Main Layout ---
-    left_col, right_col = st.columns([1, 1])
+    left_col, right_col = st.columns([1, 1.5])
     
     # --- LEFT: Keeper + Insights ---
     with left_col:
@@ -132,7 +132,7 @@ def show():
             content = f"""
             <div style='border:1px solid #ddd; border-radius:8px; padding:10px; background-color:#f9f9f9; margin-bottom:12px;'>
                 <h5 style='margin-bottom:8px; font-size:16px;'>{title}</h5>
-                <ul style='padding-left:14px; font-size:6px; line-height:1; margin:0;'>
+                <ul style='padding-left:14px; font-size:10px; line-height:1; margin:0;'>
             """
             for topic, subject in items:
                 bullet = color_map.get(topic, "") if use_icons else "•"
@@ -151,28 +151,52 @@ def show():
             st.markdown("""<div style='border:1px solid #ccc; border-radius:6px; padding:6px; background-color:#f9f9f9;'>
                 <p style='font-size:14px; margin-bottom:4px;'>Need help interpreting the insights? Keeper is here for you.</p></div>""", unsafe_allow_html=True)
             user_question = st.text_input(label=" ", placeholder="Ask Keeper a quick question...", label_visibility="collapsed")
-            if st.button("Ask", use_container_width=True):
-                if user_question.strip():
-                    st.success("✅ Keeper has noted your question!")
-                else:
-                    st.warning("⚠️ Please type your question first.")
+        col_q1, col_q2 = st.columns([6, 1])    
+        with col_q2:
+            st.button("Ask", use_container_width=True)
+                            
     
     # --- RIGHT: Visual Insights ---
     with right_col:
-        st.markdown("##### 💡Visual Insights")
+        #st.markdown("##### 💡Visual Insights")
     
         # Layer 1
         col1, col2 = st.columns(2)
         with col1:
             st.markdown("<h6 style='text-align: center;'>📈 User Activity Over Time</h6>", unsafe_allow_html=True)
             fig1 = px.line(df_viz, x="FOM", y=["users", "active_users"], markers=True)
-            fig1.update_layout(height=250, margin=dict(t=30, l=10, r=10, b=10))
+            #fig1.update_layout(height=250, margin=dict(t=30, l=10, r=10, b=10))          
+            fig1.update_layout(
+                height=250,
+                margin=dict(t=30, l=10, r=10, b=70),  # more bottom spacing
+                legend_orientation='h',
+                legend_y=-0.3,
+                legend_font=dict(size=10),
+                legend_title_text="",  # removes "variable" or legend title
+                xaxis=dict(
+                    tickfont=dict(size=10),
+                    tickangle=0  # Set -45 if x-labels are crowded
+                )
+            )
             st.plotly_chart(fig1, use_container_width=True)
     
         with col2:
             st.markdown("<h6 style='text-align: center;'>📈 Usage Score Trend (P50, P90, P100)</h6>", unsafe_allow_html=True)
             fig2 = px.line(df_viz_12mo, x="FOM", y=["usage_score_p50", "usage_score_p90", "usage_score_p100"])
-            fig2.update_layout(height=250, margin=dict(t=30, l=10, r=10, b=10))
+            #fig2.update_layout(height=250, margin=dict(t=30, l=10, r=10, b=10))
+            fig2.update_layout(
+                height=250,
+                margin=dict(t=30, l=10, r=10, b=70),  # more space at bottom
+                legend_orientation='h',
+                legend_y=-0.3,
+                legend_font=dict(size=10),
+                legend_title_text="",  # removes "variable"
+                xaxis=dict(
+                    tickfont=dict(size=10),
+                    tickangle=0  # or -45 if needed
+                )
+            )
+
             st.plotly_chart(fig2, use_container_width=True)
     
         # Layer 2
