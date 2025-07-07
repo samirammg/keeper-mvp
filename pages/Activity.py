@@ -6,7 +6,9 @@ import plotly.express as px
 from datetime import datetime
 from streamlit_extras.switch_page_button import switch_page
 from utils import hide_sidebar
+from navigation import show_navigation
 
+    
 
 st.set_page_config(page_title="Activity", layout="wide")
 hide_sidebar()
@@ -27,42 +29,7 @@ def show():
     with st.container():
         col1, col3 = st.columns([4, 1])
         with col3:
-            menu = st.selectbox("", [
-                "📌 Stay on CSM Activity",
-                "🩺 Team Pulse",
-                "↳  📊 Product Usage",
-                "↳  💬 Support Trends",
-                "📘 Customer Pulse",
-                "🧩 Keeper Pulse",
-                "💓 Growth Pulse",
-                "📈 Vision Pulse",
-                "↳  🧭 Strategy",
-                "🚀 Keeper Agents",
-                "🗄️ Keeper Data"
-            ], label_visibility="collapsed")
-
-    if menu == "📌 Stay on CSM Activity":
-        pass
-    elif menu == "📘 Customer Pulse":
-        switch_page("Journey")
-    elif menu == "🧩 Keeper Pulse":
-        switch_page("Pulse")
-    elif menu == "💓 Growth Pulse":
-        switch_page("GrowthPulse")
-    elif menu == "🩺 Team Pulse":
-        switch_page("TeamPulse")
-    elif menu == "↳  💬 Support Trends":
-        switch_page("Support")
-    elif menu == "↳  📊 Product Usage":
-        switch_page("Usage")
-    elif menu == "📈 Vision Pulse":
-        switch_page("VisionPulse")
-    elif menu == "↳  🧭 Strategy":
-        switch_page("Strategy")
-    elif menu == "🚀 Keeper Agents":
-        switch_page("agent")
-    elif menu == "🗄️ Keeper Data":
-        switch_page("onbording")
+            show_navigation()
     
     @st.cache_data
     def load_activity_data():
