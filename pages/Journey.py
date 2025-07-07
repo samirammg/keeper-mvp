@@ -48,8 +48,8 @@ def show():
             selection = st.selectbox("", ["📘 Stay on Customer Pulse"] + list(menu_options.keys()), label_visibility="collapsed")
 
     if selection != "📘 Stay on Customer Pulse":
-        switch_page(menu_options[selection])
-    
+        st.session_state["page"] = menu_options[selection]
+        st.experimental_rerun()
         
         
     # --- Config ---
