@@ -24,7 +24,7 @@ def show():
     with st.container():
         _, filter_col = st.columns([4,1])
         with filter_col:     
-            show_navigation()
+            show_navigation("🩺 Team Pulse")
 
 
     # --- Static Key Metrics ---
