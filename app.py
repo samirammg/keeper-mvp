@@ -29,3 +29,4 @@ if menu != "🧩 Stay on Keeper Pulse":
     }
     page = page_map[menu]
     st.markdown(f'<meta http-equiv="refresh" content="0; url=/{page}">', unsafe_allow_html=True)
+st.markdown('<meta http-equiv="refresh" content="0; url=/Pulse">', unsafe_allow_html=True)
