@@ -33,4 +33,4 @@ def hide_sidebar():
             }
         </style>
     """, unsafe_allow_html=True)
-    fix_scaling()
+    #fix_scaling()
