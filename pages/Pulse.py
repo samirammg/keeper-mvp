@@ -87,16 +87,19 @@ def show():
             #selected_fom = st.selectbox("Selected Date", df_score_summary['FOM_str'].unique()[::-1], label_visibility="collapsed")
     selected_fom_dt = pd.to_datetime(selected_fom)
     row = df_score_summary[df_score_summary['FOM_str'] == selected_fom].iloc[0]
+
+
+    
     
     # --- Metric Card Renderer ---
     def metric_card(title, value, delta=None):
         delta_str = ""
         if delta is not None:
             arrow = "🔺+" if delta >= 0 else "🔻-"
-            delta_str = f"<p style=\"color:gray; font-size: 10px; margin:0\">{arrow} {abs(delta):.1f}% from last period</p>"
+            delta_str = f"<p style=\"color:gray; font-size: 8px; margin:0\">{arrow} {abs(delta):.1f}% from last period</p>"
         return f"""
-        <div style="border:1px solid #e0e0e0; padding:5px; border-radius:6px; background-color:#f9f9f9; width: 100%; margin-bottom:2px">
-            <h6 style="margin-bottom:0">{title}</h8>
+        <div style="border:1px solid #e0e0e0; padding:4px; border-radius:6px; background-color:#f9f9f9; width: 100%; margin-bottom:2px">
+            <h8 style="margin-bottom:0">{title}</h8>
             <p style="font-size: 18px; font-weight:600; margin:0">{value}</p>
             {delta_str}
         </div>
