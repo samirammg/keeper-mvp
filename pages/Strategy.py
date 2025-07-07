@@ -34,7 +34,7 @@ def show():
         
     
     # --- Load data ---
-    df = pd.read_csv("5-trend_simulation_dashboard.csv")
+    df = pd.read_csv("data/5-trend_simulation_dashboard.csv")
     # Round all rate columns to 4 decimal places
     rate_cols = [col for col in df.columns if 'Rate' in col or 'rate' in col]
     df[rate_cols] = df[rate_cols].round(2)
