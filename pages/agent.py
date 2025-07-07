@@ -69,9 +69,9 @@ def show():
     
     def kpi_card(title, value):
         return f"""
-        <div style="border:1px solid #e0e0e0; padding:10px; border-radius:8px; background-color:#f9f9f9; width: 100%; margin-bottom:10px">
+        <div style="border:1px solid #e0e0e0; padding:10px; border-radius:8px; background-color:#f9f9f9; width: 100%; margin-bottom:0">
             <h6 style="margin-bottom:0; font-size:14px;">{title}</h6>
-            <p style="font-size: 22px; font-weight: bold; margin:5px 0">{value}</p>
+            <p style="font-size: 18px; font-weight: bold; margin:3px 0">{value}</p>
         </div>
         """
     
