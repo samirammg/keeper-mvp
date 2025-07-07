@@ -100,15 +100,12 @@ def show():
         return f"""
         <div style="border:1px solid #e0e0e0; padding:4px; border-radius:6px; background-color:#f9f9f9; width: 100%; margin-bottom:2px">
             <h8 style="margin-bottom:0">{title}</h8>
-            <p style="font-size: 18px; font-weight:600; margin:0">{value}</p>
+            <p style="font-size: 18px; font-weight:bold; margin:0">{value}</p>
             {delta_str}
         </div>
         """
     
-    # --- Page Header ---
-
-   
-    
+    # --- Page Header --- 
     # --- Display Cards ---
     # Top row = classification counts
     top_keys = ['adoption', 'expansion', 'renewal', 'risky']
@@ -125,7 +122,7 @@ def show():
         val = f"${row[key]:,.0f}"
         bottom_cols[i].markdown(metric_card(score_metrics[key], val), unsafe_allow_html=True)
     
-    st.markdown("---")
+    #st.markdown("---")
     
     ...
     # --- Prepare df_fom earlier for both columns ---
@@ -137,19 +134,19 @@ def show():
     
     with left_col:
         # --- FIGURE 1: Stage Distribution (left) ---
-        st.markdown("#### 📊 Stage Distribution")
+        #st.markdown("###### 📊 Stage Distribution")
         stage_count_data = pd.DataFrame({
             'stage': [ 'Expansion', 'Renewal', 'Adoption','Risky'],
             'count': [ row['expansion'], row['renewal'],row['adoption'], row['risky']]
         })
-        fig1 = px.bar(stage_count_data, x='stage', y='count', color='stage', title='Stage Counts',
+        fig1 = px.bar(stage_count_data, x='stage', y='count', color='stage', title='📊 Stage Distribution',
                       color_discrete_map={"Risky": c_risky, "Adoption": c_adoption, "Expansion":c_expansion, "Renewal": c_renew})
         fig1.update_layout(
             showlegend=False,
             plot_bgcolor='white',
-            xaxis=dict(showgrid=False, tickfont=dict(size=22)),
-            yaxis=dict(showgrid=False, tickfont=dict(size=16)),
-            title_font=dict(size=20)
+            xaxis=dict(showgrid=False, tickfont=dict(size=18)),
+            yaxis=dict(showgrid=False, tickfont=dict(size=12)),
+            title_font=dict(size=18)
         )
         st.plotly_chart(fig1, use_container_width=True)
     
