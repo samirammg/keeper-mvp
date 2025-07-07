@@ -32,43 +32,25 @@ def show():
     with st.container():
         col1, col3 = st.columns([4, 1])
         with col3:
-            menu = st.selectbox("", [
-                "📘 Stay on Customer Pulse",
-                "🧩 Keeper Pulse",
-                "💓 Growth Pulse",
-                "🩺 Team Pulse",
-                "↳  📌 CSM Activity",
-                "↳  💬 Support Trends",
-                "↳  📊 Product Usage",
-                "📈 Vision Pulse",
-                "↳  🧭 Strategy",
-                "🚀 Keeper Agents",
-                "🗄️ Keeper Data"
-            ], label_visibility="collapsed")
+            menu_options = {
+                "🧩 Keeper Pulse": "Pulse",
+                "💓 Growth Pulse": "GrowthPulse",
+                "🩺 Team Pulse": "TeamPulse",
+                "↳  📌 CSM Activity": "Activity",
+                "↳  💬 Support Trends": "Support",
+                "↳  📊 Product Usage": "Usage",
+                "📈 Vision Pulse": "VisionPulse",
+                "↳  🧭 Strategy": "Strategy",
+                "🚀 Keeper Agents": "agent",
+                "🗄️ Keeper Data": "onbording"
+            }
 
+            selection = st.selectbox("", ["📘 Stay on Customer Pulse"] + list(menu_options.keys()), label_visibility="collapsed")
 
-    if  menu == "📘 Stay on Customer Pulse":
-        pass
-    elif menu == "🧩 Keeper Pulse":
-        switch_page("Pulse")
-    elif menu == "💓 Growth Pulse":
-        switch_page("GrowthPulse")
-    elif menu == "🩺 Team Pulse":
-        switch_page("TeamPulse")
-    elif menu == "↳  📌 CSM Activity":
-        switch_page("Activity")
-    elif menu == "↳  💬 Support Trends":
-        switch_page("Support")
-    elif menu == "↳  📊 Product Usage":
-        switch_page("Usage")
-    elif menu == "📈 Vision Pulse":
-        switch_page("VisionPulse")
-    elif menu == "↳  🧭 Strategy":
-        switch_page("Strategy")
-    elif menu == "🚀 Keeper Agents":
-        switch_page("agent")
-    elif menu == "🗄️ Keeper Data":
-        switch_page("onbording")  
+    if selection != "📘 Stay on Customer Pulse":
+        switch_page(menu_options[selection])
+    
+        
         
     # --- Config ---
       # Load and clean data
