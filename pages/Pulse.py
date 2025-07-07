@@ -130,7 +130,7 @@ def show():
     
 
     # --- New Layout: Left with fig1, chatbot & table | Right with all other figs ---
-    left_col, right_col = st.columns([1,1])
+    left_col, right_col = st.columns([1.5,1])
     
     with left_col:
         # --- FIGURE 1: Stage Distribution (left) ---
@@ -203,7 +203,7 @@ def show():
     
     with right_col:
         # --- First Row: FIG 1 and FIG 6 ---
-        fig_row1_col1, fig_row1_col2 = st.columns([1.5,1])
+        fig_row1_col1, fig_row1_col2 = st.columns([1.2,1])
     
         with fig_row1_col1:
             #st.markdown("#### ⏳ Stage Trends: Contracts Over Time")
@@ -246,7 +246,7 @@ def show():
                           color_discrete_sequence=[c_risky])
             st.plotly_chart(fig5, use_container_width=True)
 
-        chat_col1, chat_col2 = st.columns([2,1])  
+        chat_col1, chat_col2 = st.columns([1.2,1])  
         with chat_col1:
             st.markdown("###### 🚨 Alert System for Emerging Risks")
             with st.container(border=True):
@@ -262,7 +262,8 @@ def show():
         with chat_col2:
             st.markdown("###### 🤖 Ask Keeper")
             default_q = "Why Pulse of company 1 is risky?"
-            user_input = st.text_area("###### 🤖 Ask Keeper", value=default_q, height=100)
+            user_input = st.text_area(label="", value=default_q, height=100,label_visibility="collapsed")
+            
             if st.button("Ask Keeper"):
                 st.info("""
         ❌ Declining product usage (↓40% in last 2 months)  
