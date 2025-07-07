@@ -1,3 +1,5 @@
+# navigation.py
+
 import streamlit as st
 import os
 
@@ -20,12 +22,10 @@ def show_navigation():
 
     current_label = menu_labels.get(current_page, f"{current_page}")
 
-    # Remove current page
     menu_options = {label: name for name, label in menu_labels.items() if name != current_page}
-
     options = [f"📘 Stay on {current_label}"] + list(menu_options.keys())
 
-    selected = st.selectbox("🔀 Jump to another module:", options)
+    selected = st.selectbox("", options, label_visibility="collapsed")
 
     if selected != f"📘 Stay on {current_label}":
         target_file = menu_options[selected]
