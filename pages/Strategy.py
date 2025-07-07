@@ -134,7 +134,7 @@ def show():
     
     if data_row is not None:
         # --- Customer Base Overview ---
-        st.markdown("## Customer Base Overview")
+        st.markdown("#### Customer Base Overview")
         active_accounts = int(data_row["Active Accounts"])
         new_accounts = int(data_row["New Accounts"])
         renew_accounts = int(data_row["Renew Accounts"])
@@ -161,22 +161,22 @@ def show():
     
         st.markdown(f"""<div style='background-color: #F5F5F5; padding: 15px; border-radius: 8px;'>
             <div style='display: flex; justify-content: space-between; gap: 10px;'>
-                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Active Accounts</div><div style='font-size: 1.5em;'>{active_accounts_str}</div></div>
-                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>New Accounts</div><div style='font-size: 1.5em;'>{new_accounts_str}</div></div>
-                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Renew Accounts</div><div style='font-size: 1.5em;'>{renew_accounts_str}</div></div>
-                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Upsell Accounts</div><div style='font-size: 1.5em;'>{upsell_accounts_str}</div></div>
-                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Churn Accounts</div><div style='font-size: 1.5em;'>{churn_accounts_str}</div></div>
+                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Active Accounts</div><div style='font-size: 1em;'>{active_accounts_str}</div></div>
+                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>New Accounts</div><div style='font-size: 1em;'>{new_accounts_str}</div></div>
+                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Renew Accounts</div><div style='font-size: 1em;'>{renew_accounts_str}</div></div>
+                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Upsell Accounts</div><div style='font-size: 1em;'>{upsell_accounts_str}</div></div>
+                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Churn Accounts</div><div style='font-size: 1em;'>{churn_accounts_str}</div></div>
             </div></div>""", unsafe_allow_html=True)
     
         # --- Revenue Overview ---data
-        st.markdown("## Revenue Overview")
+        st.markdown("#### Revenue Overview")
         st.markdown(f"""<div style='background-color: #F5F5F5; padding: 15px; border-radius: 8px;'>
             <div style='display: flex; justify-content: space-between; gap: 10px;'>
-                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Active ACV</div><div style='font-size: 1.5em;'>{active_acv_str}</div></div>
-                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>New ACV</div><div style='font-size: 1.5em;'>{new_acv_str}</div></div>
-                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Renew ACV</div><div style='font-size: 1.5em;'>{renew_acv_str}</div></div>
-                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Upsell ACV</div><div style='font-size: 1.5em;'>{upsell_acv_str}</div></div>
-                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Churn ACV</div><div style='font-size: 1.5em;'>{churn_acv_str}</div></div>
+                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Active ACV</div><div style='font-size: 1em;'>{active_acv_str}</div></div>
+                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>New ACV</div><div style='font-size: 1em;'>{new_acv_str}</div></div>
+                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Renew ACV</div><div style='font-size: 1em;'>{renew_acv_str}</div></div>
+                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Upsell ACV</div><div style='font-size: 1em;'>{upsell_acv_str}</div></div>
+                <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Churn ACV</div><div style='font-size: 1em;'>{churn_acv_str}</div></div>
             </div></div>""", unsafe_allow_html=True)
     
     
