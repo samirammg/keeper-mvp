@@ -372,7 +372,7 @@ def show():
                             st.text_area("Keeper's Response", value=story_row.get("answer", "Keeper Processing..."), height=60)
 
                         st.markdown(f"""
-                        <h3 style='margin-top: 30px;'>🧠 Generative Insight</h3>
+                        <h3 style='margin-top: 24px;'>🧠 Generative Insight</h3>
                         <div style='display: flex; flex-direction: column; gap: 20px;'>
                         <div style='flex: 1; padding: 12px; border: 1px solid #d3d3d3; border-radius: 10px;'>
                         <h6>Summary of Account</h6>
