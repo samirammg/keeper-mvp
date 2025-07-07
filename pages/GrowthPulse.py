@@ -148,7 +148,7 @@ def show():
     
     with left_col:
 
-        st.markdown("#### 🤖 Keeper To-Dos")
+        st.markdown("### 🤖 Keeper To-Dos")
         # Agent table: Name, Objective, Tasks, Completion, Status, Blocker, Modify
         import pandas as _pd
         agents_df = _pd.DataFrame([
@@ -170,7 +170,7 @@ def show():
        # Modify button spanning table width
         st.button("Modify", use_container_width=True)
         #st.markdown("<br><br>", unsafe_allow_html=True)
-        st.markdown("#### ✅ Your To-Dos")
+        st.markdown("### ✅ Your To-Dos")
 
         todos_df = _pd.DataFrame([
             {"To Do": "Call Data Integration Team to confirm connection status", "Start Date": "2025-04-30 09:00 AM", "Target Account": 5, "Completion": "0%", "Status": "Not Started", "Description": "<span style='color:blue; text-decoration:underline'>Account List/email</span>", "Priority": "P0"},
@@ -208,7 +208,7 @@ def show():
         with st.container(border=True):
             for r in recs:
                 st.markdown(
-                    f"<span style='font-size:10px;'>⚠️ {r['Suggestion']} "
+                    f"<span style='font-size:10px;line-height:1.2; margin-bottom:4px;'>⚠️ {r['Suggestion']} "
                     "<span style='color:blue;text-decoration:underline'>(click)</span></span>",
                     unsafe_allow_html=True
                 )
@@ -226,13 +226,13 @@ def show():
         ]
         with st.container(border=True):
             for r in recs:
-                st.markdown(f"<span style='font-size:10px;'>🎯 {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
+                st.markdown(f"<span style='font-size:10px; line-height:1.2; margin-bottom:4px;'>🎯 {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
         #st.markdown("---")
 
 
         #st.markdown("###### 🤖 Ask Keeper")
         default_q = "Why Pulse of company 1 is risky?"
-        user_input = st.text_area("####### 🤖 Ask Keeper", value=default_q, height=100)
+        user_input = st.text_area("#### 🤖 Ask Keeper", value=default_q, height=100)
         if st.button("Ask Keeper"):
             st.info("""
         ❌ Declining product usage (↓40% in last 2 months)  
