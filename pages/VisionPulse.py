@@ -87,9 +87,7 @@ def show():
         st.write(styled_html, unsafe_allow_html=True)
        # Modify button spanning table width
         st.button("Modify", use_container_width=True)
-        st.markdown("<br><br>", unsafe_allow_html=True)
-        
-
+        #st.markdown("<br><br>", unsafe_allow_html=True)
         
         st.markdown("### ✅ Your To-Dos")
         todos_df = pd.DataFrame([
