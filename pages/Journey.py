@@ -147,7 +147,7 @@ def show():
                     end_date_range = start_date_range + DateOffset(years=7)
             
                     # Plotting
-                    fig, ax = plt.subplots(figsize=(12, 7))
+                    fig, ax = plt.subplots(figsize=(12, 5.5))
             
                     for spine in ax.spines.values():
                         spine.set_visible(False)
@@ -232,8 +232,8 @@ def show():
             fig2.autofmt_xdate()
     
             with col_right:
-                st.markdown("<div style='border: 1px solid #d3d3d3; border-radius: 10px; padding: 15px;'><h4>Risk Score</h4><p style='font-size: 34px; font-weight: bold;'>" + str(int(round(df_score[df_score['account_name'] == selected_account_id].sort_values(by='fom').iloc[-1]['score_final'] * 100))) + "</p></div>", unsafe_allow_html=True)
-                st.markdown("<h4 style='margin-top: 20px;'>Score Trend</h4>", unsafe_allow_html=True)
+                st.markdown("<div style='border: 1px solid #d3d3d3; border-radius: 8px; padding: 12px;'><h6>Risk Score</h6><p style='font-size: 24px; font-weight: bold;'>" + str(int(round(df_score[df_score['account_name'] == selected_account_id].sort_values(by='fom').iloc[-1]['score_final'] * 100))) + "</p></div>", unsafe_allow_html=True)
+                st.markdown("<h6 style='margin-top: 16px;'>Score Trend</h6>", unsafe_allow_html=True)
                 st.pyplot(fig2)
                
     
