@@ -103,9 +103,9 @@ def show():
             num_contracts = len(account_df)
     
             with col_left:
-                sub_col1, sub_col2 = st.columns([1, 1], gap="large")
+                sub_col1, sub_col2 = st.columns([1, 2], gap="large")
                 with sub_col1:
-                    st.subheader(f"######📘 Account Overview")
+                    st.markdown(f"<h5 style='margin-bottom: 5px;'>📘 Account Overview</h5>", unsafe_allow_html=True)
                     st.markdown(f"""
                     <div style='border: 1px solid #d3d3d3; border-radius: 10px; padding: 20px;'>
                         <table style='width: 100%; font-size: 10px;'>
