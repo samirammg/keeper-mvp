@@ -105,14 +105,7 @@ def show():
             <p style="font-size: 18px; font-weight: bold; margin:3px 0">{value}</p>
             {delta_str}
         </div>
-        """
-    
-    # --- Page Header ---
-    
-    
-    #st.markdown("##### 🔍 Post Sales Stages")
-    
-    
+        """    
     
 # --- CSM & Agent Metrics ---
     csm_agent_metrics = [
@@ -155,7 +148,7 @@ def show():
     
     with left_col:
 
-        st.markdown("### 🤖 Keeper To-Dos")
+        st.markdown("###### 🤖 Keeper To-Dos")
         # Agent table: Name, Objective, Tasks, Completion, Status, Blocker, Modify
         import pandas as _pd
         agents_df = _pd.DataFrame([
@@ -166,14 +159,13 @@ def show():
             {"Keepers": "Strengthen Customer Sentiment and Loyalty Thinker", "Start Date": "2025-04-29 9:00 AM", "Target Account": 200, "Completion": "79%", "Status": "Running", "Blocker": "None"},
         ])
 
-
         display_df = agents_df.copy()
         # Style columns as HTML
         display_html = display_df.to_html(escape=False, index=False)
         # Center headers and cells via inline CSS
-        styled_html = display_html.replace('<table','<table style="width:100%; text-align:center; border-collapse: collapse;"')
-        styled_html = styled_html.replace('<th>','<th style="border:1px solid #ddd; padding:8px; text-align:left;">')
-        styled_html = styled_html.replace('<td>','<td style="border:1px solid #ddd; padding:8px; text-align:left;">')
+        styled_html = display_html.replace('<table','<table style="width:100%; text-align:center; border-collapse: collapse;font-size:12px;"')
+        styled_html = styled_html.replace('<th>','<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:12px;">')
+        styled_html = styled_html.replace('<td>','<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:12px;">')
         st.write(styled_html, unsafe_allow_html=True)
        # Modify button spanning table width
         st.button("Modify", use_container_width=True)
@@ -193,10 +185,10 @@ def show():
         # Center table and style borders
         todos_html = todos_html.replace(
             '<table',
-            '<table style="width:100%; border-collapse: collapse; text-align:center;"'
+            '<table style="width:100%; border-collapse: collapse; text-align:center;font-size:12px;"'
         )
-        todos_html = todos_html.replace('<th>', '<th style="border:1px solid #ddd; padding:8px; text-align:left;">')
-        todos_html = todos_html.replace('<td>', '<td style="border:1px solid #ddd; padding:8px; text-align:left;">')
+        todos_html = todos_html.replace('<th>', '<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:12px;">')
+        todos_html = todos_html.replace('<td>', '<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:12px;">')
         st.write(todos_html, unsafe_allow_html=True)
         st.button("Review", use_container_width=True)
 
@@ -207,7 +199,6 @@ def show():
         
         
     with right_col:
-
         st.markdown("#### 🚨 Alert System for Emerging Risks")
         recs = [
         {"Suggestion": "5 enterprise customers have data outage since 2025-04-30 09:00 AM"},
