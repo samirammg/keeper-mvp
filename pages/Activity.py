@@ -267,7 +267,9 @@ def show():
                               color='Label',
                               color_discrete_map={"Risky": "red", "Normal": "yellow", "Healthy": "green"})
                 fig4.update_traces(textinfo='label+percent',textposition='inside',insidetextorientation='auto')
-                fig4.update_layout(legend_orientation='h', legend_y=-0.2)
+                fig4.update_layout(legend_orientation='h', legend_y=-0.2,showlegend=False)
+                
+
                 st.plotly_chart(fig4, use_container_width=True)
             else:
                 st.warning("skipped: missing activity score label columns.")
