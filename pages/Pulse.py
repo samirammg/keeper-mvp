@@ -204,7 +204,7 @@ def show():
         with chat_col2:
             #st.markdown("##### 🤖 Ask Keeper")
             default_q = "Why Pulse of company 1 is risky?"
-            user_input = st.text_area("##### 🤖 Ask Keeper", value=default_q, height=5)
+            user_input = st.text_area("##### 🤖 Ask Keeper", value=default_q, height=100)
             if st.button("Ask Keeper"):
                 st.info("""
         ❌ Declining product usage (↓40% in last 2 months)  
