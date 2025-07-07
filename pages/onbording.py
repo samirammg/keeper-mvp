@@ -3,6 +3,7 @@ import pandas as pd
 import time
 from streamlit_extras.switch_page_button import switch_page
 from utils import hide_sidebar
+from navigation import show_navigation
 
 # --- Streamlit Layout ---
 st.set_page_config(page_title="Keeper Data", layout="centered")
@@ -86,47 +87,9 @@ mapping_df = pd.DataFrame(initial_mapping_data)
 # --- Navigation Menu ---
 col1, col3 = st.columns([4, 1])
 with col3:
-    menu = st.selectbox(
-        "",
-        [
-            "🗄️ Stay on Keeper Data",
-            "🧩 Keeper Pulse",
-            "📘 Customer Pulse",
-            "💓 Growth Pulse",
-            "🩺 Team Pulse",
-            "↳  📌 CSM Activity",
-            "↳  💬 Support Trends",
-            "↳  📊 Product Usage",
-            "📈 Vision Pulse",
-            "↳  🧭 Strategy",
-            "🚀 Keeper Agents"
-        ],
-        label_visibility="collapsed"
-    )
+    show_navigation()
 
-    if menu == "🗄️ Stay on Keeper Data":
-        pass
-    elif menu == "🧩 Keeper Pulse":
-        switch_page("Pulse")
-    elif menu == "📘 Customer Pulse":
-        switch_page("Journey")
-    elif menu == "💓 Growth Pulse":
-        switch_page("GrowthPulse")
-    elif menu == "🩺 Team Pulse":
-        switch_page("TeamPulse")
-    elif menu == "↳  📌 CSM Activity":
-        switch_page("Activity")
-    elif menu == "↳  💬 Support Trends":
-        switch_page("Support")
-    elif menu == "↳  📊 Product Usage":
-        switch_page("Usage")
-    elif menu == "📈 Vision Pulse":
-        switch_page("VisionPulse")
-    elif menu == "↳  🧭 Strategy":
-        switch_page("Strategy")
-    elif menu == "🚀 Keeper Agents":
-        switch_page("agent")
-
+    
 # --- Function: Prioritized Selectbox ---
 def build_prioritized_selectbox(required_field, suggestions, all_options, key_prefix):
     prioritized_options = suggestions + [col for col in all_options if col not in suggestions]
