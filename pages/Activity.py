@@ -183,7 +183,7 @@ def show():
     with main_right:
         st.markdown("##### ✨Visual Insights")
         col1, col2 = st.columns(2)
-    
+     ======
         with col1:
             fig1_df = df[df['FOM'] <= selected_fom_dt].melt(
                 id_vars='FOM_str',
@@ -194,23 +194,9 @@ def show():
                 'email_count_sum': 'email',
                 'postal_count_sum': 'postal'
             })
-            fig1 = px.bar(fig1_df, x='FOM_str', y='Count', color='Activity Type',title='CSM Activities', barmode='stack', height=250)
-            
-            fig1.update_layout(
-                font=dict(size=10),
-                xaxis=dict(
-                    title='',
-                    tickangle=0,
-                    tickfont=dict(size=8),
-                    automargin=True                ),
-                yaxis=dict(
-                    title='Count',
-                    tickfont=dict(size=9)
-                ),
-                legend_orientation='h',
-                legend_y=-0.2
-            )
-
+            fig1 = px.bar(fig1_df, x='FOM_str', y='Count', color='Activity Type',
+                          title='CSM Activities', barmode='stack', height=250)
+            fig1.update_layout(legend_orientation='h', legend_y=-0.2)
             st.plotly_chart(fig1, use_container_width=True)
         
         with col2:
@@ -227,9 +213,9 @@ def show():
                 fig7_complete[col] = fig7_complete[col].fillna(0)
             melted_fig7 = fig7_complete.melt(id_vars='MOC', value_vars=['attend_count', 'not_attend_count', 'cancel_count'],
                                              var_name='Status', value_name='Count')
-            fig7 = px.bar(melted_fig7, y='Count', color='Status', barmode='stack',
+            fig7 = px.bar(melted_fig7, x='MOC', y='Count', color='Status', barmode='stack',
                           title='Attendance Status by Month of Contract (MOC)', height=250)
-            fig7.update_layout(xaxis=dict(tickmode='array', tickfont=dict(size=8), tickvals=list(range(1, 13))),
+            fig7.update_layout(xaxis=dict(tickmode='array', tickvals=list(range(1, 13))),
                                legend_orientation='h', legend_y=-0.2)
             st.plotly_chart(fig7, use_container_width=True)
         
@@ -243,7 +229,7 @@ def show():
             fig3_long = fig3_df.melt(id_vars='FOM_str',
                                      value_vars=['activity_score_p50', 'activity_score_p90', 'activity_score_p100'],
                                      var_name='Percentile', value_name='Score')
-            fig3 = px.line(fig3_long, xaxis=dict(title='',tickangle=0, tickfont=dict(size=8),automargin=True,tickpadding=10), y='Score', color='Percentile',
+            fig3 = px.line(fig3_long, x='FOM_str', y='Score', color='Percentile',
                           title='Activity Score Percentiles Trend', markers=True, height=250)
             fig3.update_layout(legend_orientation='h', legend_y=-0.2)
             st.plotly_chart(fig3, use_container_width=True)
@@ -263,6 +249,8 @@ def show():
             plt.grid(False)
             plt.tight_layout()
             st.pyplot(plt.gcf())
+
+
         
         # --- Layer 3: Fig 4, Fig 5, Fig 2 ---
         col5, col6, col7 = st.columns(3)
