@@ -80,9 +80,9 @@ def show():
         # Style columns as HTML
         display_html = display_df.to_html(escape=False, index=False)
         # Center headers and cells via inline CSS
-        styled_html = display_html.replace('<table','<table style="width:100%; text-align:center; border-collapse: collapse;"')
-        styled_html = styled_html.replace('<th>','<th style="border:1px solid #ddd; padding:8px; text-align:left;">')
-        styled_html = styled_html.replace('<td>','<td style="border:1px solid #ddd; padding:8px; text-align:left;">')
+        styled_html = display_html.replace('<table','<table style="width:100%; text-align:center; border-collapse: collapse;font-size:10px;"')
+        styled_html = styled_html.replace('<th>','<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
+        styled_html = styled_html.replace('<td>','<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
         st.write(styled_html, unsafe_allow_html=True)
        # Modify button spanning table width
         st.button("Modify", use_container_width=True)
@@ -103,10 +103,10 @@ def show():
         # Center table and style borders
         todos_html = todos_html.replace(
             '<table',
-            '<table style="width:100%; border-collapse: collapse; text-align:center;"'
+            '<table style="width:100%; border-collapse: collapse; text-align:center;font-size:10px;"'
         )
-        todos_html = todos_html.replace('<th>', '<th style="border:1px solid #ddd; padding:8px; text-align:left;">')
-        todos_html = todos_html.replace('<td>', '<td style="border:1px solid #ddd; padding:8px; text-align:left;">')
+        todos_html = todos_html.replace('<th>', '<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
+        todos_html = todos_html.replace('<td>', '<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
         st.write(todos_html, unsafe_allow_html=True)
         st.button("Review", use_container_width=True)
 
@@ -122,10 +122,12 @@ def show():
     ]
         with st.container(border=True):
             for r in recs:
-                #st.write(f"⚠️ {r['Suggestion']}")
-                st.markdown(f"⚠️ {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
-
-        #st.markdown("---")
+                st.markdown(
+                    f"<span style='font-size:10px;line-height:1.2; margin-bottom:4px;'>⚠️ {r['Suggestion']} "
+                    "<span style='color:blue;text-decoration:underline'>(click)</span></span>",
+                    unsafe_allow_html=True
+                )
+                
 
         # --- Recommendations Section ---
         st.markdown("#### 💡 Insights & Recommendations")
@@ -138,8 +140,8 @@ def show():
         ]
         with st.container(border=True):
             for r in recs:
-                st.markdown(f"🎯 {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
-        #st.markdown("---")
+                st.markdown(f"<span style='font-size:10px; line-height:1.2; margin-bottom:4px;'>🎯 {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
+
         
         
         #st.markdown("#### 🤖 Ask Keeper")
