@@ -29,11 +29,7 @@ def show():
                 [f"Region {i}" for i in range(1,8)],
                 index=0,
                 key="region_filter"
-            )
-   
-    
-    
-    
+            )   
     # --- Static Key Metrics ---
     static_metrics = [
         ("💰 Customer Lifetime Value", "$180,000", 3.0),
@@ -85,9 +81,9 @@ def show():
         # Style columns as HTML
         display_html = display_df.to_html(escape=False, index=False)
         # Center headers and cells via inline CSS
-        styled_html = display_html.replace('<table','<table style="width:100%; text-align:center; border-collapse: collapse;"')
-        styled_html = styled_html.replace('<th>','<th style="border:1px solid #ddd; padding:8px; text-align:left;">')
-        styled_html = styled_html.replace('<td>','<td style="border:1px solid #ddd; padding:8px; text-align:left;">')
+        styled_html = display_html.replace('<table','<table style="width:100%; text-align:center; border-collapse: collapse;font-size:10px;"')
+        styled_html = styled_html.replace('<th>','<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
+        styled_html = styled_html.replace('<td>','<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
         st.write(styled_html, unsafe_allow_html=True)
        # Modify button spanning table width
         st.button("Modify", use_container_width=True)
@@ -108,10 +104,10 @@ def show():
         # Center table and style borders
         todos_html = todos_html.replace(
             '<table',
-            '<table style="width:100%; border-collapse: collapse; text-align:center;"'
+            '<table style="width:100%; border-collapse: collapse; text-align:center;font-size:10px;"'
         )
-        todos_html = todos_html.replace('<th>', '<th style="border:1px solid #ddd; padding:8px; text-align:left;">')
-        todos_html = todos_html.replace('<td>', '<td style="border:1px solid #ddd; padding:8px; text-align:left;">')
+        todos_html = todos_html.replace('<th>', '<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
+        todos_html = todos_html.replace('<td>', '<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
         st.write(todos_html, unsafe_allow_html=True)
         st.button("Review", use_container_width=True)
 
@@ -119,7 +115,7 @@ def show():
         
     with right_col:
 
-        st.markdown("#### 🚨 Alert System for Emerging Risks")
+        st.markdown("###### 🚨 Alert System for Emerging Risks")
         recs = [
         {"Suggestion": "If ‘risky’ customers don’t drop 5% this quarter, we risk $4 M ACV loss in 6 months."},
         {"Suggestion": "Fintech accounts outside the U.S. under $50 K ACV churn +30%."},
@@ -127,33 +123,31 @@ def show():
         {"Suggestion": "Product X usage drives enterprise churn 5×."}
         ]
 
-       
         with st.container(border=True):
             for r in recs:
-                #st.write(f"⚠️ {r['Suggestion']}")
-                st.markdown(f"⚠️ {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
-
-        #st.markdown("---")
+                st.markdown(
+                    f"<span style='font-size:10px;line-height:0.5; margin-bottom:0;'>⚠️ {r['Suggestion']} "
+                    "<span style='color:blue;text-decoration:underline'>(click)</span></span>",
+                    unsafe_allow_html=True
+                )       
 
         # --- Recommendations Section ---
-        st.markdown("#### 💡 Insights & Recommendations")
+        st.markdown("###### 💡 Insights & Recommendations")
         recs = [
             {"Suggestion": "Customer retention costs fell 25% last quarter via Keeper Optimizer."},
             {"Suggestion": "Sub-12-month contracts double churn risk; extend initial terms."},
             {"Suggestion": "19% moved from Safe Renewal to Expansion, boosting ACV by 10%."},
             {"Suggestion": "Bundling Y + Z drove a 10% lift; pilot with top 20 fintech accounts for $2 M upside."},
         ]
-
-        
         with st.container(border=True):
             for r in recs:
-                st.markdown(f"🎯 {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
-        #st.markdown("---")
+                st.markdown(f"<span style='font-size:10px; line-height:0.5; margin-bottom:0;'>🎯 {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
+
         
-        
+      
         #st.markdown("#### 🤖 Ask Keeper")
         default_q = "Why Pulse of company 1 is risky?"
-        user_input = st.text_area("##### 🤖 Ask Keeper", value=default_q, height=1)
+        user_input = st.text_area("##### 🤖 Ask Keeper", value=default_q, height=100)
         if st.button("Ask Keeper"):
             st.info("""
         ❌ Declining product usage (↓40% in last 2 months)  
