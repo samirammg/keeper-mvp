@@ -37,32 +37,30 @@ def show():
                 "🚀 Keeper Agents",
                 "🗄️ Keeper Data"
             ], label_visibility="collapsed")
+
     if menu == "🧩 Stay on Keeper Pulse":
-        pass
+        st.info("You're already on Keeper Pulse.")
     elif menu == "📘 Customer Pulse":
-        switch_page("Journey")
+        st.page_link("pages/Journey.py", label="➡️ Go to Customer Pulse", icon="📘")
     elif menu == "💓 Growth Pulse":
-        switch_page("GrowthPulse")
+        st.page_link("pages/GrowthPulse.py", label="➡️ Go to Growth Pulse", icon="💓")
     elif menu == "🩺 Team Pulse":
-        switch_page("TeamPulse")
+        st.page_link("pages/TeamPulse.py", label="➡️ Go to Team Pulse", icon="🩺")
     elif menu == "↳  📌 CSM Activity":
-        switch_page("Activity")
+        st.page_link("pages/Activity.py", label="➡️ Go to CSM Activity", icon="📌")
     elif menu == "↳  💬 Support Trends":
-        switch_page("Support")
+        st.page_link("pages/Support.py", label="➡️ Go to Support Trends", icon="💬")
     elif menu == "↳  📊 Product Usage":
-        switch_page("Usage")
+        st.page_link("pages/Usage.py", label="➡️ Go to Product Usage", icon="📊")
     elif menu == "📈 Vision Pulse":
-        switch_page("VisionPulse")
+        st.page_link("pages/VisionPulse.py", label="➡️ Go to Vision Pulse", icon="📈")
     elif menu == "↳  🧭 Strategy":
-        switch_page("Strategy")
+        st.page_link("pages/Strategy.py", label="➡️ Go to Strategy", icon="🧭")
     elif menu == "🚀 Keeper Agents":
-        switch_page("agent")
+        st.page_link("pages/agent.py", label="➡️ Go to Keeper Agents", icon="🚀")
     elif menu == "🗄️ Keeper Data":
-        switch_page("onbording")
-
-
+        st.page_link("pages/onbording.py", label="➡️ Go to Keeper Data", icon="🗄️")
     
-
     
     c_risky='#6f6f6f'
     c_adoption='#9ccee1'
