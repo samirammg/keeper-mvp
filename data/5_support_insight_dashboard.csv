@@ -1,0 +1,14 @@
+section,topic,subject
+AI-Generated Key Insights for Executives,Red,"Escalations have increased by 15% in the last quarter, primarily in Enterprise customers"
+AI-Generated Key Insights for Executives,Yellow,Resolution time is longer for billing-related tickets?consider automation
+AI-Generated Key Insights for Executives,Green,High CSAT for proactive support queries?scaling self-service could improve efficiency
+AI-Driven Strategy Recommendations,Reducing Resolution Time: ,Increase automation for billing inquiries.
+AI-Driven Strategy Recommendations,Improving CSAT,Enhance self-service options for common issues.
+AI-Driven Strategy Recommendations,Reducing Escalations:,Train frontline agents to handle complex queries early.
+AI-Driven Strategy Recommendations,Cost Optimization,Reduce agent workload by automating repetitive queries.
+Risk Alert System,High Risk,High-priority tickets are exceeding SLAs by 50%. Consider urgent staffing adjustments.
+Risk Alert System,Medium Risk,"Resolution time for Tier 2 tickets has increased by 20%, leading to longer wait times. Monitor trends."
+Risk Alert System,Low Risk,"Self-service usage is slightly decreasing, but still within the acceptable range.No immediate action needed."
+Action Recommend,Recommendation 1,VIP customers are at risk due to unresolved issues. Assign a dedicated support manager for immediate follow-up
+Action Recommend,Recommendation 2,Billing inquiries are a growing concern. Consider implementing a chatbot or self-service workflows
+Action Recommend,Recommendation 3,Technical support tickets are taking longer to resolve.Increase knowledge-sharing among agents to speed up resolution times.
