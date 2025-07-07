@@ -19,6 +19,7 @@ hide_sidebar()
 
 def show():
     st.title("📘 Customer Pulse")
+
     st.subheader("Customer Journey & Risk Score Trend")    
     st.markdown(
         """
