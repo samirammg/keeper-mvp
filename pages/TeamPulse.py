@@ -62,7 +62,7 @@ def show():
     for i, (title, value) in enumerate(static_metrics[4:]):
         cols2[i].markdown(metric_card(title, value), unsafe_allow_html=True)
 
-    st.markdown("---")
+    #st.markdown("---")
     # --- New Layout: Left with fig1, chatbot & table | Right with all other figs ---
     left_col, right_col = st.columns([2, 1])
     
@@ -103,10 +103,10 @@ def show():
         # Center table and style borders
         todos_html = todos_html.replace(
             '<table',
-            '<table style="width:100%; border-collapse: collapse; text-align:center;font-size:10px;"'
+            '<table style="width:100%; border-collapse: collapse; text-align:center;font-size:9px;"'
         )
-        todos_html = todos_html.replace('<th>', '<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
-        todos_html = todos_html.replace('<td>', '<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:10px;">')
+        todos_html = todos_html.replace('<th>', '<th style="border:1px solid #ddd; padding:8px; text-align:left;font-size:9px;">')
+        todos_html = todos_html.replace('<td>', '<td style="border:1px solid #ddd; padding:8px; text-align:left;font-size:9px;">')
         st.write(todos_html, unsafe_allow_html=True)
         st.button("Review", use_container_width=True)
 
@@ -114,7 +114,7 @@ def show():
         
     with right_col:
 
-        st.markdown("#### 🚨 Alert System for Emerging Risks")
+        st.markdown("###### 🚨 Alert System for Emerging Risks")
         recs = [
         {"Suggestion": "First Response Time (avg. time between ticket creation and first response) increased 23% in the last week."},
         {"Suggestion": "Repeat Touch Rate: 45% of tickets for Feature X are persistent issues this month."},
@@ -130,7 +130,7 @@ def show():
                 
 
         # --- Recommendations Section ---
-        st.markdown("#### 💡 Insights & Recommendations")
+        st.markdown("###### 💡 Insights & Recommendations")
         recs = [
             {"Suggestion": "Shipping Feature Z projects $0.5 M expansion ACV."},
             {"Suggestion": "First Response Time spike aligns with rising negative sentiment. Run the “Support Sentiment Analyzer” Doer to pinpoint root causes."},
