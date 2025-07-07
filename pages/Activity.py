@@ -268,21 +268,15 @@ def show():
                               color_discrete_map={"Risky": "red", "Normal": "yellow", "Healthy": "green"})
                 fig4.update_traces(textinfo='label+percent',textposition='inside',insidetextorientation='auto')
                 fig4.update_layout(legend_orientation='h', legend_y=-0.2,showlegend=False)
-                
-
                 st.plotly_chart(fig4, use_container_width=True)
             else:
                 st.warning("skipped: missing activity score label columns.")
-
-
-
-
-        
+      
         with col6:
             fig5_df = df_activity_m[df_activity_m['FOM_str'] == selected_fom]
-            fig5 = px.treemap(fig5_df, path=['activity_topic'], values='duration (minutes)', height=300,
+            fig5 = px.treemap(fig5_df, path=['activity_topic'], values='duration (minutes)', height=200,
                               title='Activity Topics ')
-            fig5.update_layout(margin=dict(t=30, l=10, r=10, b=10))
+            fig5.update_layout(margin=dict(t=15, l=5, r=5, b=5))
             st.plotly_chart(fig5, use_container_width=True)
         
         with col7:
@@ -290,7 +284,9 @@ def show():
             fig2 = px.pie(fig2_df, names='sentiment_class', title='Interaction Sentiment ', height=300,
                           color='sentiment_class',
                           color_discrete_map={"negative": "red", "neutral": "yellow", "positive": "green"})
-            fig2.update_layout(legend_orientation='h', legend_y=-0.2)
+            fig2.update_traces(textinfo='label+percent',textposition='inside',insidetextorientation='auto')
+            
+            fig2.update_layout(legend_orientation='h', legend_y=-0.2,showlegend=False)
             st.plotly_chart(fig2, use_container_width=True)
 
 if __name__ == "__main__":
