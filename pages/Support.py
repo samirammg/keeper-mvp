@@ -25,7 +25,7 @@ def show():
     with st.container():
         col1, col3 = st.columns([4, 1])
         with col3:
-            show_navigation("↳  🧭 Strategy")
+            show_navigation("↳  💬 Support Trends")
        
     # --- Load Data ---
     @st.cache_data
