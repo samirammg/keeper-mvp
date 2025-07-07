@@ -244,6 +244,7 @@ def show():
                 legend_font=dict(size=10),
                 legend_title_text="",  # Removes "Status"
                 margin=dict(b=70),
+                xaxis_title=None,
                 height=250
             )
 
@@ -262,10 +263,25 @@ def show():
                                      var_name='Percentile', value_name='Score')
             fig3 = px.line(fig3_long, x='FOM_str', y='Score', color='Percentile',
                           title='Activity Score Percentiles Trend', markers=True, height=250)
-            fig3.update_layout(legend_orientation='h', legend_y=-0.2)
+            fig3.update_layout(
+                legend_orientation='h',
+                legend_y=-0.3,
+                legend_font=dict(size=10),
+                legend_title_text="",  # Removes "Percentile"
+                margin=dict(b=70),
+                xaxis_title=None,
+                xaxis=dict(
+                    tickfont=dict(size=10),
+                    tickangle=-45  # Optional: tilt for clarity
+                ),
+                height=250
+            )
+
+            #fig3.update_layout(legend_orientation='h', legend_y=-0.2)
             st.plotly_chart(fig3, use_container_width=True)
         
         with col4:
+            st.markdown("###### Interaction Duration by MOC ")
             fig6_df = df_moc.copy()
             fig6_df['FOM'] = pd.to_datetime(fig6_df['FOM'])
             fig6_df['FOM_str'] = fig6_df['FOM'].dt.to_period('M').astype(str)
@@ -276,7 +292,7 @@ def show():
             sns.boxplot(x='MOC', y='total_duration', data=fig6_complete, ax=ax)
             plt.xlabel('Month of Contract (MOC)')
             plt.ylabel('Interaction Duration (min)')
-            plt.title('Interaction Duration by MOC')
+            #plt.title('Interaction Duration by MOC')
             plt.grid(False)
             plt.tight_layout()
             st.pyplot(plt.gcf())
