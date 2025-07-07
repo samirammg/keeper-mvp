@@ -251,7 +251,7 @@ def show():
             st.markdown("###### 🚨 Alert System for Emerging Risks")
             with st.container(border=True):
                 st.markdown("""
-                <div style="font-size: 10px;">
+                <div style="font-size: 12px;">
                     <ul>
                         <li><strong>5 enterprise customers</strong> are at high churn risk due to declining product usage. <strong>Immediate action recommended.</strong></li>
                         <li>Your <strong>top 10 highest-value customers</strong> are engaging less — consider reaching out.</li>
@@ -265,7 +265,7 @@ def show():
             st.markdown("""
                 <style>
                 textarea {
-                    font-size: 13px !important;  /* Adjust size as needed */
+                    font-size: 12px !important;  /* Adjust size as needed */
                 }
                 </style>
             """, unsafe_allow_html=True)
