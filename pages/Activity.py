@@ -277,7 +277,7 @@ def show():
         
         with col4:
             st.markdown(" ")
-            st.markdown("##### Interaction Duration by MOC ")
+            #st.markdown("##### Interaction Duration by MOC ")
             fig6_df = df_moc.copy()
             fig6_df['FOM'] = pd.to_datetime(fig6_df['FOM'])
             fig6_df['FOM_str'] = fig6_df['FOM'].dt.to_period('M').astype(str)
@@ -288,7 +288,7 @@ def show():
             sns.boxplot(x='MOC', y='total_duration', data=fig6_complete, ax=ax)
             plt.xlabel('Month of Contract (MOC)')
             plt.ylabel('Interaction Duration (min)')
-            #plt.title('Interaction Duration by MOC')
+            plt.title('Interaction Duration by MOC', fontsize=16, fontweight='bold')
             plt.grid(False)
             plt.tight_layout()
             st.pyplot(plt.gcf())
@@ -318,6 +318,7 @@ def show():
                 st.warning("skipped: missing activity score label columns.")
       
         with col6:
+            st.markdown(" ")
             st.markdown(" ")
             fig5_df = df_activity_m[df_activity_m['FOM_str'] == selected_fom]
             fig5 = px.treemap(fig5_df, path=['activity_topic'], values='duration (minutes)', height=200,
