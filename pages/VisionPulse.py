@@ -23,7 +23,7 @@ def show():
         _, filter_col = st.columns([4,1])
         with filter_col:
             
-           show_navigation()
+           show_navigation("📈 Vision Pulse")
             selected_team = st.selectbox(
                 "Select Region:",
                 [f"Region {i}" for i in range(1,8)],
