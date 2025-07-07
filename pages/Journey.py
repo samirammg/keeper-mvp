@@ -103,12 +103,12 @@ def show():
             num_contracts = len(account_df)
     
             with col_left:
-                sub_col1, sub_col2 = st.columns([1, 2], gap="large")
+                sub_col1, sub_col2 = st.columns([1, 1], gap="large")
                 with sub_col1:
-                    st.subheader(f"📘 Account Overview")
+                    st.subheader(f"######📘 Account Overview")
                     st.markdown(f"""
                     <div style='border: 1px solid #d3d3d3; border-radius: 10px; padding: 20px;'>
-                        <table style='width: 100%; font-size: 16px;'>
+                        <table style='width: 100%; font-size: 10px;'>
                             <tr><td><b>Account Name</b></td><td>{account_name}</td></tr>
                             <tr><td><b>Industry</b></td><td>{industry}</td></tr>
                             <tr><td><b>Size</b></td><td>{size}</td></tr>
@@ -340,7 +340,7 @@ def show():
                     st.pyplot(fig5)
                  # --- Display Image ---
                 
-                st.image("data/net.png.png", use_column_width=True)
+                st.image("data/net.png.png", use_container_width=True)
            
                 with col_left:
                     st.markdown("<h4 style='margin-top: 40px;'>💬 Ask Keeper</h4>", unsafe_allow_html=True)
