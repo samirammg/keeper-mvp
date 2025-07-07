@@ -134,7 +134,7 @@ def show():
     
     if data_row is not None:
         # --- Customer Base Overview ---
-        st.markdown("#### Customer Base Overview")
+        st.markdown("##### Customer Base Overview")
         active_accounts = int(data_row["Active Accounts"])
         new_accounts = int(data_row["New Accounts"])
         renew_accounts = int(data_row["Renew Accounts"])
@@ -169,7 +169,7 @@ def show():
             </div></div>""", unsafe_allow_html=True)
     
         # --- Revenue Overview ---data
-        st.markdown("#### Revenue Overview")
+        st.markdown("##### Revenue Overview")
         st.markdown(f"""<div style='background-color: #F5F5F5; padding: 15px; border-radius: 8px;'>
             <div style='display: flex; justify-content: space-between; gap: 10px;'>
                 <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Active ACV</div><div style='font-size: 1em;'>{active_acv_str}</div></div>
@@ -178,6 +178,7 @@ def show():
                 <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Upsell ACV</div><div style='font-size: 1em;'>{upsell_acv_str}</div></div>
                 <div style='flex: 1; text-align: center;'><div style='font-weight: 600;'>Churn ACV</div><div style='font-size: 1em;'>{churn_acv_str}</div></div>
             </div></div>""", unsafe_allow_html=True)
+        st.markdown(" ")
     
     
     projection_df = calculate_6_month_projection(selected_period)
@@ -255,7 +256,7 @@ def show():
         st.markdown("""
         <div style="background-color: #EBF5F9; border-left: 6px solid #0d6efd; padding: 16px; border-radius: 6px; margin-bottom: 20px;">
             <h4 style="margin-top: 0;font-size: 10px;">📊 Industry Benchmarking & Competitive Insights</h4>
-            <table style="width: 100%; font-size: 10px;">
+            <table style="width: 100%; font-size: 8px;">
                 <tr style="font-weight: bold;">
                     <td>Metric</td>
                     <td>Your Value</td>
@@ -309,7 +310,7 @@ def show():
             st.markdown("##### Trend Analysis & Future Projection")
             st.markdown(f"""
                 <div style="border: 2px solid #888; padding: 20px; border-radius: 8px; background-color: #FFFFFF;">
-                    <table style="width: 100%; border-collapse: collapse;font-size: 10px;">
+                    <table style="width: 100%; border-collapse: collapse;font-size: 8px;">
                         <tr><td style="padding: 6px 12px; font-weight: 600;">Projected ARR (Next 6 months)</td><td>$ {prj_acv:.1f}</td></tr>
                         <tr><td style="padding: 6px 12px; font-weight: 600;">Projected Churn Impact</td><td>If churn continues at {prj_churn_rate:.0%}, ARR loss will be $ {prj_lose_acv:.1f}</td></tr>
                         <tr><td style="padding: 6px 12px; font-weight: 600;">Expected Upsell Growth</td><td>Potential revenue increase of $ {prj_up_acv:.1f}</td></tr>
@@ -376,7 +377,7 @@ def show():
         with col1:
             available_past_months = df[df['FOM'] < selected_period]['FOM'].dt.strftime('%b %Y').tolist()
             #user_selected_month = st.selectbox("📅 Set Simulation Date", available_past_months, key="compare_month")
-            st.markdown("<p style='font-size:10px; font-weight:600;'>📅 Set Simulation Date</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size:12px; font-weight:600;'>📅 Set Simulation Date</p>", unsafe_allow_html=True)
 
             user_selected_month = st.selectbox(
                 label="",
@@ -393,7 +394,7 @@ def show():
             df_user_month = df[df['FOM'].dt.to_period('M') == user_selected_period.to_period('M')]
             default_churn = float(df_user_month['Churn Accounts Rate'].values[0]) if not df_user_month.empty else 0
             #user_churn_multiplier = st.number_input("Set Churn Rate Multiplier (e.g., 2 = 2x current rate)", min_value=0.0, value=1.0, step=0.1, key="user_churn_multiplier")
-            st.markdown("<p style='font-size:10px; font-weight:600;'>Set Churn Rate Multiplier (e.g., 2 = 2x current rate)</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size:12px; font-weight:600;'>Set Churn Rate Multiplier (e.g., 2 = 2x current rate)</p>", unsafe_allow_html=True)
 
             user_churn_multiplier = st.number_input(
                 label="",
@@ -406,7 +407,7 @@ def show():
         with col3:
             default_acq = float(df_user_month['New Accounts Rate'].values[0]) if not df_user_month.empty else 0
             #user_acq_multiplier = st.number_input("Set Acquisition Rate Multiplier (e.g., 0.5 = 50% of current)", min_value=0.0, value=1.0, step=0.1, key="user_acq_multiplier")
-            st.markdown("<p style='font-size:10px; font-weight:600;'>Set Acquisition Rate Multiplier (e.g., 0.5 = 50% of current)</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size:12px; font-weight:600;'>Set Acquisition Rate Multiplier (e.g., 0.5 = 50% of current)</p>", unsafe_allow_html=True)
 
             user_acq_multiplier = st.number_input(
                 label="",  # Hide default label
