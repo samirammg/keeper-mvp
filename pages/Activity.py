@@ -198,16 +198,18 @@ def show():
                           title='CSM Activities', barmode='stack', height=250)
 
             fig1.update_layout(
-                legend_orientation='h',
-                legend_y=-0.3,  # Lowered for more distance from x-axis
-                legend_font=dict(size=10),  # Smaller legend text
-                margin=dict(b=70),  # Add bottom margin to separate legend and x-axis
-                xaxis_title=None,
-                xaxis=dict(
-                    tickfont=dict(size=10),  # Smaller x-axis labels
-                    tickangle=-45  # Optional: tilt for clarity
-                )
+            legend_orientation='h',
+            legend_y=-0.3,
+            legend_font=dict(size=10),
+            legend_title_text="",  # 🔧 Hides "Activity Type"
+            margin=dict(b=70),
+            xaxis_title=None,
+            xaxis=dict(
+                tickfont=dict(size=10),
+                tickangle=-45
             )
+            )
+
 
             
             #fig1.update_layout(legend_orientation='h', legend_y=-0.2)
@@ -229,8 +231,23 @@ def show():
                                              var_name='Status', value_name='Count')
             fig7 = px.bar(melted_fig7, x='MOC', y='Count', color='Status', barmode='stack',
                           title='Attendance Status by Month of Contract (MOC)', height=250)
-            fig7.update_layout(xaxis=dict(tickmode='array', tickvals=list(range(1, 13))),
-                               legend_orientation='h', legend_y=-0.2)
+
+            fig7.update_layout(
+                xaxis=dict(
+                    tickmode='array',
+                    tickvals=list(range(1, 13)),
+                    tickfont=dict(size=10),
+                    tickangle=0  # You can set this to -45 if needed
+                ),
+                legend_orientation='h',
+                legend_y=-0.3,
+                legend_font=dict(size=10),
+                legend_title_text="",  # Removes "Status"
+                margin=dict(b=70),
+                height=250
+            )
+
+            
             st.plotly_chart(fig7, use_container_width=True)
         
         # --- Layer 2: Fig 3 and Fig 6 ---
