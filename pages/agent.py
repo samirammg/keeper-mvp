@@ -5,6 +5,7 @@ import random
 from datetime import datetime, timedelta
 from streamlit_extras.switch_page_button import switch_page  # 👈 Add this line
 from utils import hide_sidebar
+from navigation import show_navigation
 
 
 # --- Set Streamlit Page Config ---
@@ -35,19 +36,7 @@ def show():
     with st.container():
         col1, col3 = st.columns([4, 1])
         with col3:
-            menu = st.selectbox("", [
-                "🚀 Stay on Keeper Agents",
-                "📘 Customer Pulse",
-                "🧩 Keeper Pulse",
-                "💓 Growth Pulse",
-                "🩺 Team Pulse",
-                "↳  📌 CSM Activity",
-                "↳  💬 Support Trends",
-                "↳  📊 Product Usage",
-                "📈 Vision Pulse",
-                "↳  🧭 Strategy",
-                "🗄️ Keeper Data"
-            ], label_visibility="collapsed")
+            show_navigation()
     
             # Load agents data only once
             if "agents_df_full" not in st.session_state:
@@ -68,30 +57,7 @@ def show():
     st.session_state.agents_df = agents_df.copy()
 
     
-    if menu =="🚀 Stay on Keeper Agents":
-        pass
-    elif menu == "📘 Customer Pulse":
-        switch_page("Journey")
-    elif menu == "🧩 Keeper Pulse":
-        switch_page("Pulse")
-    elif menu == "💓 Growth Pulse":
-        switch_page("GrowthPulse")
-    elif menu == "🩺 Team Pulse":
-        switch_page("TeamPulse")
-    elif menu == "↳  📌 CSM Activity":
-        switch_page("Activity")
-    elif menu == "↳  💬 Support Trends":
-        switch_page("Support")
-    elif menu == "↳  📊 Product Usage":
-        switch_page("Usage")
-    elif menu == "📈 Vision Pulse":
-        switch_page("VisionPulse")
-    elif menu == "↳  🧭 Strategy":
-        switch_page("Strategy")
-    elif menu == "🗄️ Keeper Data":
-        switch_page("onbording")
-
-  
+   
     # --- Sample KPI Values (replace with real counts later) ---
     num_thinkers = 7
     num_doers = 20
