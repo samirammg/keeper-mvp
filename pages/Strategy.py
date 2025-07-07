@@ -219,7 +219,7 @@ def show():
         st.markdown("", unsafe_allow_html=True)
         st.markdown("""
             <div style="background-color: #FFF6D1; border-left: 6px solid #ffc107; padding: 16px; margin-bottom: 20px; border-radius: 6px;">
-                <h4 style="margin-top: 0;font-size: 10px;">🧠 Action Recommend</h4>
+                <h4 style="margin-top: 0;font-size: 12px;">🧠 Action Recommend</h4>
                 <ul style="padding-left: 20px; margin: 0;font-size: 10px;">
                     <li>If churn is reduced by <strong>X%</strong>, ARR will increase by <strong>$Y M</strong></li>
                     <li>Upsell engagement is below industry average. Consider targeting <strong>Segment A</strong> for expansion.</li>
@@ -233,7 +233,7 @@ def show():
         
         st.markdown("""
                 <div style="background-color: #D5D5D5; border-left: 6px solid #dc3545; padding: 16px; margin-bottom: 20px; border-radius: 6px;">
-                <h4 style="margin-top: 0;font-size: 10px;">🚨 Risk Alert System</h4>
+                <h4 style="margin-top: 0;font-size: 12px;">🚨 Risk Alert System</h4>
                 <ul style="padding-left: 20px; margin: 0;font-size: 10px;">
                     <li><strong>High Risk:</strong> Churn increasing in Mid-Market customers (<em>-X% engagement</em>).</li>
                     <li><strong>Medium Risk:</strong> Support tickets rising in Enterprise accounts (Potential renewal risk).</li>
@@ -246,7 +246,7 @@ def show():
     
         st.markdown("""
             <div style="background-color: #EBECED; border-left: 6px solid #6c757d; padding: 16px; margin-bottom: 20px; border-radius: 6px;">
-                <h4 style="margin-top: 0;font-size: 10px;">🔧 Custom Alerts & Thresholds</h4>
+                <h4 style="margin-top: 0;font-size: 12px;">🔧 Custom Alerts & Thresholds</h4>
                 <ul style="padding-left: 20px; margin: 0;font-size: 10px;">
                     <li><strong>Churn threshold:</strong> e.g., Alert me if churn exceeds <strong>X%</strong></li>
                     <li><strong>Support escalations:</strong> e.g., Alert me if support tickets increase <strong>Y%</strong></li>
@@ -256,7 +256,7 @@ def show():
         """, unsafe_allow_html=True)
         st.markdown("""
         <div style="background-color: #EBF5F9; border-left: 6px solid #0d6efd; padding: 16px; border-radius: 6px; margin-bottom: 20px;">
-            <h4 style="margin-top: 0;font-size: 10px;">📊 Industry Benchmarking & Competitive Insights</h4>
+            <h4 style="margin-top: 0;font-size: 12px;">📊 Industry Benchmarking & Competitive Insights</h4>
             <table style="width: 100%; font-size: 8px;">
                 <tr style="font-weight: bold;">
                     <td>Metric</td>
@@ -275,7 +275,7 @@ def show():
     
         st.markdown("""
             <div style="background-color: #d1ecf1; border-left: 6px solid #C5DBED; padding: 16px; margin-bottom: 20px; border-radius: 6px;">
-                <h4 style="margin-top: 0;font-size: 10px;">📊 AI-Generated Competitive Insights</h4>
+                <h4 style="margin-top: 0;font-size: 12px;">📊 AI-Generated Competitive Insights</h4>
                 <ul style="padding-left: 20px; margin: 0;font-size: 10px;">
                     <li>Your churn rate is <strong>X%</strong> higher than the industry average. Consider retention-focused initiatives.</li>
                     <li>Your upsell rate is leading the market by <strong>Y%</strong>. Explore doubling down on expansion strategies.</li>
@@ -292,7 +292,7 @@ def show():
             st.markdown("""
                 <div style="background-color: #f4f4f4; padding: 12px; border-radius: 6px; border-left: 5px solid #0d6efd; margin-top: 10px;font-size: 10px;">
                     <strong>Insight Box:</strong><br>
-                    <ul style="margin-top: 8px;font-size: 10px;">
+                    <ul style="margin-top: 8px;font-size: 12px;">
                         <li><strong>Exponential Growth</strong>: Healthy acceleration. Ensure support systems can scale.</li>
                         <li><strong>Goal Seeking</strong>: Stabilization toward a limit. Revisit targets or constraints.</li>
                         <li><strong>S-Shaped Growth</strong>: Maturity approaching. Time for expansion strategy.</li>
@@ -305,6 +305,7 @@ def show():
     
                 
     with main_col:
+        st.markdown("   ")
         top_left, top_right = st.columns([1,1])
     
         with top_left:
