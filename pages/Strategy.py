@@ -215,6 +215,7 @@ def show():
     # Layout split after revenue overview
     main_col, side_col = st.columns([3, 1])
     with side_col:
+        st.markdown(" ")
         st.markdown("", unsafe_allow_html=True)
         st.markdown("""
             <div style="background-color: #FFF6D1; border-left: 6px solid #ffc107; padding: 16px; margin-bottom: 20px; border-radius: 6px;">
