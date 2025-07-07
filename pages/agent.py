@@ -36,7 +36,7 @@ def show():
     with st.container():
         col1, col3 = st.columns([4, 1])
         with col3:
-            show_navigation()
+            show_navigation( "🚀 Keeper Agents")
     
             # Load agents data only once
             if "agents_df_full" not in st.session_state:
