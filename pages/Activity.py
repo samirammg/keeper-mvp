@@ -145,7 +145,7 @@ def show():
     
     
     # --- Main Two-Column Layout ---
-    main_left, main_right = st.columns([1, 1])
+    main_left, main_right = st.columns([1, 1.5])
     
     # --- LEFT: Generative Insights + Keeper ---
     with main_left:
@@ -155,7 +155,7 @@ def show():
             content = f"""
             <div style='border:1px solid #ddd; border-radius:8px; padding:10px; background-color:#f9f9f9; margin-bottom:12px;'>
                 <h5 style='margin-bottom:8px; font-size:16px;'>{title}</h5>
-                <ul style='padding-left:14px; font-size:6px; line-height:1; margin:0;'>
+                <ul style='padding-left:14px; font-size:10px; line-height:1; margin:0;'>
             """
             for topic, subject in items:
                 bullet = color_map.get(topic, "") if use_icons else "•"
@@ -176,11 +176,8 @@ def show():
             user_question = st.text_input(label=" ", placeholder="Ask Keeper a quick question...", label_visibility="collapsed")
             col_q1, col_q2 = st.columns([6, 1])
             with col_q2:
-                if st.button("Ask", use_container_width=True):
-                    if user_question.strip():
-                        st.success("✅ Keeper has noted your question!")
-                    else:
-                        st.warning("⚠️ Please type your question first.")
+                st.button("Ask", use_container_width=True)
+                    
     
     # --- RIGHT: Visual Insights ---
     with main_right:
@@ -269,10 +266,15 @@ def show():
                 fig4 = px.pie(fig4_data, names='Label', values='Value', title='Activity Score Labels', height=300,
                               color='Label',
                               color_discrete_map={"Risky": "red", "Normal": "yellow", "Healthy": "green"})
+                fig4.update_traces(textinfo='label+percent',textposition='inside',insidetextorientation='auto')
                 fig4.update_layout(legend_orientation='h', legend_y=-0.2)
                 st.plotly_chart(fig4, use_container_width=True)
             else:
                 st.warning("skipped: missing activity score label columns.")
+
+
+
+
         
         with col6:
             fig5_df = df_activity_m[df_activity_m['FOM_str'] == selected_fom]
