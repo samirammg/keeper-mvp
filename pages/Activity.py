@@ -194,7 +194,8 @@ def show():
                 'email_count_sum': 'email',
                 'postal_count_sum': 'postal'
             })
-            fig1 = px.bar(fig1_df, x='FOM_str', y='Count', color='Activity Type',
+                
+            fig1 = px.bar(fig1_df, xaxis=dict(title='',tickangle=0, tickfont=dict(size=8),automargin=True,tickpadding=10), y='Count', color='Activity Type',
                           title='CSM Activities', barmode='stack', height=250)
             fig1.update_layout(legend_orientation='h', legend_y=-0.2)
             st.plotly_chart(fig1, use_container_width=True)
@@ -213,7 +214,7 @@ def show():
                 fig7_complete[col] = fig7_complete[col].fillna(0)
             melted_fig7 = fig7_complete.melt(id_vars='MOC', value_vars=['attend_count', 'not_attend_count', 'cancel_count'],
                                              var_name='Status', value_name='Count')
-            fig7 = px.bar(melted_fig7, x='MOC', y='Count', color='Status', barmode='stack',
+            fig7 = px.bar(melted_fig7, xaxis=dict(title='',tickangle=0, tickfont=dict(size=8),automargin=True,tickpadding=10), y='Count', color='Status', barmode='stack',
                           title='Attendance Status by Month of Contract (MOC)', height=250)
             fig7.update_layout(xaxis=dict(tickmode='array', tickvals=list(range(1, 13))),
                                legend_orientation='h', legend_y=-0.2)
@@ -229,7 +230,7 @@ def show():
             fig3_long = fig3_df.melt(id_vars='FOM_str',
                                      value_vars=['activity_score_p50', 'activity_score_p90', 'activity_score_p100'],
                                      var_name='Percentile', value_name='Score')
-            fig3 = px.line(fig3_long, x='FOM_str', y='Score', color='Percentile',
+            fig3 = px.line(fig3_long, xaxis=dict(title='',tickangle=0, tickfont=dict(size=8),automargin=True,tickpadding=10), y='Score', color='Percentile',
                           title='Activity Score Percentiles Trend', markers=True, height=250)
             fig3.update_layout(legend_orientation='h', legend_y=-0.2)
             st.plotly_chart(fig3, use_container_width=True)
@@ -276,12 +277,12 @@ def show():
             fig5_df = df_activity_m[df_activity_m['FOM_str'] == selected_fom]
             fig5 = px.treemap(fig5_df, path=['activity_topic'], values='duration (minutes)', height=200,
                               title='Activity Topics ')
-            fig5.update_layout(margin=dict(t=15, l=5, r=5, b=5))
+            fig5.update_layout(margin=dict(t=30, l=5, r=5, b=5))
             st.plotly_chart(fig5, use_container_width=True)
         
         with col7:
             fig2_df = df_activity_m[df_activity_m['FOM_str'] == selected_fom].dropna(subset=['sentiment_class'])
-            fig2 = px.pie(fig2_df, names='sentiment_class', title='Interaction Sentiment ', height=300,
+            fig2 = px.pie(fig2_df, names='sentiment_class', title='Interaction Sentiment', height=300,
                           color='sentiment_class',
                           color_discrete_map={"negative": "red", "neutral": "yellow", "positive": "green"})
             fig2.update_traces(textinfo='label+percent',textposition='inside',insidetextorientation='auto')
