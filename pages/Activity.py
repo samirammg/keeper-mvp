@@ -181,7 +181,7 @@ def show():
     
     # --- RIGHT: Visual Insights ---
     with main_right:
-        st.markdown("##### ✨Visual Insights")
+        #st.markdown("##### ✨Visual Insights")
         col1, col2 = st.columns(2)
    
         with col1:
@@ -196,7 +196,6 @@ def show():
             })
             fig1 = px.bar(fig1_df, x='FOM_str', y='Count', color='Activity Type',
                           title='CSM Activities', barmode='stack', height=250)
-
             fig1.update_layout(
             legend_orientation='h',
             legend_y=-0.3,
@@ -208,10 +207,7 @@ def show():
                 tickfont=dict(size=10),
                 tickangle=-45
             )
-            )
-
-
-            
+            )      
             #fig1.update_layout(legend_orientation='h', legend_y=-0.2)
             st.plotly_chart(fig1, use_container_width=True)
         
@@ -252,8 +248,7 @@ def show():
             st.plotly_chart(fig7, use_container_width=True)
         
         # --- Layer 2: Fig 3 and Fig 6 ---
-        col3, col4 = st.columns(2)
-        
+        col3, col4 = st.columns(2)        
         with col3:
             months_back = 12
             start_date = selected_fom_dt - pd.DateOffset(months=months_back)
@@ -271,8 +266,8 @@ def show():
                 margin=dict(b=70),
                 xaxis_title=None,
                 xaxis=dict(
-                    tickfont=dict(size=10),
-                    tickangle=-45  # Optional: tilt for clarity
+                    tickfont=dict(size=10)
+                    #tickangle=-45  # Optional: tilt for clarity
                 ),
                 height=250
             )
@@ -281,7 +276,8 @@ def show():
             st.plotly_chart(fig3, use_container_width=True)
         
         with col4:
-            st.markdown("###### Interaction Duration by MOC ")
+            st.markdown(" ")
+            st.markdown("##### Interaction Duration by MOC ")
             fig6_df = df_moc.copy()
             fig6_df['FOM'] = pd.to_datetime(fig6_df['FOM'])
             fig6_df['FOM_str'] = fig6_df['FOM'].dt.to_period('M').astype(str)
@@ -322,6 +318,7 @@ def show():
                 st.warning("skipped: missing activity score label columns.")
       
         with col6:
+            st.markdown(" ")
             fig5_df = df_activity_m[df_activity_m['FOM_str'] == selected_fom]
             fig5 = px.treemap(fig5_df, path=['activity_topic'], values='duration (minutes)', height=200,
                               title='Activity Topics ')
