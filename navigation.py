@@ -1,10 +1,6 @@
 import streamlit as st
-import os
 
-def show_navigation(_=None):
-    current_page = os.path.splitext(os.path.basename(__file__))[0]
-
-    # Page name → label mapping
+def show_navigation(current_label=None):
     page_labels = {
         "Journey": "📘 Customer Pulse",
         "Pulse": "🧩 Keeper Pulse",
@@ -19,14 +15,14 @@ def show_navigation(_=None):
         "onbording": "🗄️ Keeper Data"
     }
 
-    current_label = page_labels.get(current_page, f"{current_page}")
-    other_pages = {k: v for k, v in page_labels.items() if k != current_page}
+    current_label = current_label or "Unknown"
+    other_labels = [label for label in page_labels.values() if label != current_label]
+    options = [f"Stay on {current_label}"] + other_labels
 
-    options = [f"Stay on {current_label}"] + list(other_pages.values())
     selected = st.selectbox("", options, label_visibility="collapsed")
 
     if selected != f"Stay on {current_label}":
-        # Reverse map: label → filename
-        target_file = next((k for k, v in other_pages.items() if v == selected), None)
-        if target_file:
-            st.switch_page(other_pages[target_file])  # now using the actual label
+        target_file = [k for k, v in page_labels.items() if v == selected][0]
+        st.experimental_set_query_params(page=target_file)
+        st.markdown(f"<meta http-equiv='refresh' content='0; url=/{target_file}'/>", unsafe_allow_html=True)
+        st.stop()
