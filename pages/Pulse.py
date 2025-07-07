@@ -214,7 +214,7 @@ def show():
             fig2 = px.bar(df_score_c_melted, x='FOM_str', y='count', color='stage', barmode='stack',
                           title='⏳ Stage Trends Over Time',
                           color_discrete_map={"risky": c_risky, "adoption": c_adoption, "expansion": c_expansion, "renewal": c_renew})
-            fig2.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500,showlegend=False )
+            fig2.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False,title=None ), yaxis=dict(showgrid=False), width=1500,showlegend=False )
                              # legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5, font=dict(size=6)))
             st.plotly_chart(fig2, use_container_width=True)
         
@@ -235,7 +235,7 @@ def show():
             fig4 = px.histogram(df_fom, x='MOC', color='stage', barmode='stack',
                                 title='📈 Number of Contracts by MOC',
                                 color_discrete_map={"risky": c_risky, "adoption": c_adoption, "expansion":c_expansion, "renewal": c_renew})
-            fig4.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500,showlegend=False )
+            fig4.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False,title="Month of the contract"), yaxis=dict(showgrid=False), width=1500,showlegend=False )
                              # legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5, font=dict(size=6)))
             st.plotly_chart(fig4, use_container_width=True)
     
