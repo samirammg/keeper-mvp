@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from streamlit_extras.switch_page_button import switch_page
 from utils import hide_sidebar
+from navigation import show_navigation
 
 st.set_page_config(page_title="Vision Pulse", layout="wide")
 hide_sidebar()
@@ -22,21 +23,7 @@ def show():
         _, filter_col = st.columns([4,1])
         with filter_col:
             
-            menu = st.selectbox(
-                "",[
-                    "📈 Stay on Vision Pulse",
-                    "↳  🧭 Strategy",
-                    "📘 Customer Pulse",
-                    "🧩 Keeper Pulse",
-                    "💓 Growth Pulse",
-                    "🩺 Team Pulse",
-                    "↳  📌 CSM Activity",
-                    "↳  💬 Support Trends",
-                    "↳  📊 Product Usage",
-                    "🚀 Keeper Agents",
-                    "🗄️ Keeper Data"
-                ],label_visibility="collapsed",key="nav_menu"
-            )
+           show_navigation()
             selected_team = st.selectbox(
                 "Select Region:",
                 [f"Region {i}" for i in range(1,8)],
@@ -45,28 +32,6 @@ def show():
             )
    
     
-    if menu == "📈 Stay on Vision Pulse":
-        pass
-    elif menu == "📘 Customer Pulse":
-        switch_page("Journey")
-    elif menu == "🧩 Keeper Pulse":
-        switch_page("Pulse")
-    elif menu == "💓 Growth Pulse":
-        switch_page("GrowthPulse")
-    elif menu == "🩺 Team Pulse":
-        switch_page("TeamPulse")
-    elif menu == "↳  📌 CSM Activity":
-        switch_page("Activity")
-    elif menu == "↳  💬 Support Trends":
-        switch_page("Support")
-    elif menu == "↳  📊 Product Usage":
-        switch_page("Usage")
-    elif menu == "↳  🧭 Strategy":
-        switch_page("Strategy")
-    elif menu == "🚀 Keeper Agents":
-        switch_page("agent")
-    elif menu == "🗄️ Keeper Data":
-        switch_page("onbording")
     
     
     # --- Static Key Metrics ---
