@@ -73,11 +73,16 @@ def show():
         filter_col = st.columns([4, 1])[1]
         with filter_col:
             #selected_fom = st.selectbox("", df_summary["FOM_str"].unique()[::-1], label_visibility="collapsed")
+            valid_dates = df_summary[
+                (df_summary["FOM_str"] >= "2023-01") & (df_summary["FOM_str"] <= "2025-07")
+            ]["FOM_str"].unique()[::-1]
+            
             selected_fom = st.selectbox(
                 "Selected Date",
-                df_summary['FOM_str'].unique()[::-1],
-                index=list(df_summary['FOM_str'].unique()[::-1]).index("2025-04")
-                )
+                valid_dates,
+                index=list(valid_dates).index("2025-04") if "2025-04" in valid_dates else 0
+            )
+
 
     row = df_summary[df_summary["FOM_str"] == selected_fom].iloc[0]
     
@@ -221,7 +226,7 @@ def show():
                 showlegend=True
             )
             
-            fig3.update_traces(textinfo='label+percent',textposition='inside',insidetextorientation='auto')
+            #fig3.update_traces(textinfo='label+percent',textposition='inside',insidetextorientation='auto')
 
             st.plotly_chart(fig3, use_container_width=True)
     
@@ -243,13 +248,13 @@ def show():
         with col5:
             st.markdown("<h6 style='text-align: center;'>📊 Frequency Distribution (Last 12 Months)</h6>", unsafe_allow_html=True)
             fig5 = px.box(raw_12mo, x="FOM_str", y="usage_frequency", points="outliers")
-            fig5.update_layout(height=240, margin=dict(t=30, l=10, r=10, b=10),xaxis_title=None)
+            fig5.update_layout(height=240, margin=dict(t=30, l=10, r=10, b=10),xaxis_title=None,yaxis_title="Frequency of Usage")
             st.plotly_chart(fig5, use_container_width=True)
         
         with col6:
             st.markdown("<h6 style='text-align: center;'>📊 Recency Distribution (Last 12 Months)</h6>", unsafe_allow_html=True)
             fig6 = px.box(raw_12mo, x="FOM_str", y="usage_recency_d", points="outliers")
-            fig6.update_layout(height=240, margin=dict(t=30, l=10, r=10, b=10),xaxis_title=None)
+            fig6.update_layout(height=240, margin=dict(t=30, l=10, r=10, b=10),xaxis_title=None,yaxis_title="Recency of Usage")
             st.plotly_chart(fig6, use_container_width=True)
     
 if __name__ == "__main__":
