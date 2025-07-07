@@ -217,11 +217,6 @@ def show():
             fig2.update_layout(plot_bgcolor='white', xaxis=dict(showgrid=False), yaxis=dict(showgrid=False), width=1500,
                               legend=dict(orientation="h",yanchor="bottom", y=-0.3, xanchor="center",x=0.5))
             st.plotly_chart(fig2, use_container_width=True)
-    
-
-
-st.plotly_chart(fig2, use_container_width=True)
-
         
         with fig_row1_col2:
             #st.markdown("#### 🗺️ Industry for Risky Customers")
