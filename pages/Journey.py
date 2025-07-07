@@ -87,7 +87,7 @@ def show():
 
    
         if not account_df.empty:
-            col_left, col_right = st.columns([2, 1], gap="large")
+            col_left, col_right = st.columns([2.5, 1], gap="large")
             first_row = account_df.iloc[0]
             last_row_contract = account_df.iloc[-1]
             name = first_row['account_id']
@@ -120,7 +120,7 @@ def show():
                             </div>
                     """, unsafe_allow_html=True)
                 with sub_col2:
-                    #st.markdown("")
+                    st.markdown("")
                     # Load and filter score data for selected account
                     df = df_score[df_score['account_name'] == selected_account_id].copy()
                     contract_starts = df.groupby('contract_id').first().reset_index()
