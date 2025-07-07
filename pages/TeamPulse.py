@@ -123,7 +123,7 @@ def show():
         with st.container(border=True):
             for r in recs:
                 st.markdown(
-                    f"<span style='font-size:10px;line-height:1.2; margin-bottom:4px;'>⚠️ {r['Suggestion']} "
+                    f"<span style='font-size:10px;line-height:0.8; margin-bottom:2px;'>⚠️ {r['Suggestion']} "
                     "<span style='color:blue;text-decoration:underline'>(click)</span></span>",
                     unsafe_allow_html=True
                 )
@@ -140,7 +140,7 @@ def show():
         ]
         with st.container(border=True):
             for r in recs:
-                st.markdown(f"<span style='font-size:10px; line-height:1.2; margin-bottom:4px;'>🎯 {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
+                st.markdown(f"<span style='font-size:10px; line-height:0.8; margin-bottom:2px;'>🎯 {r['Suggestion']} <span style='color:blue;text-decoration:underline'>(click)</span>", unsafe_allow_html=True)
 
         
         
