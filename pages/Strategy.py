@@ -255,7 +255,7 @@ def show():
         st.markdown("""
         <div style="background-color: #EBF5F9; border-left: 6px solid #0d6efd; padding: 16px; border-radius: 6px; margin-bottom: 20px;">
             <h4 style="margin-top: 0;font-size: 10px;">📊 Industry Benchmarking & Competitive Insights</h4>
-            <table style="width: 100%; font-size: 13px;">
+            <table style="width: 100%; font-size: 10px;">
                 <tr style="font-weight: bold;">
                     <td>Metric</td>
                     <td>Your Value</td>
@@ -375,7 +375,16 @@ def show():
         col1, col2, col3 = st.columns([2, 2, 2])
         with col1:
             available_past_months = df[df['FOM'] < selected_period]['FOM'].dt.strftime('%b %Y').tolist()
-            user_selected_month = st.selectbox("📅 Set Simulation Date", available_past_months, key="compare_month")
+            #user_selected_month = st.selectbox("📅 Set Simulation Date", available_past_months, key="compare_month")
+            st.markdown("<p style='font-size:10px; font-weight:600;'>📅 Set Simulation Date</p>", unsafe_allow_html=True)
+
+            user_selected_month = st.selectbox(
+                label="",
+                options=available_past_months,
+                key="compare_month"
+            )
+
+
             user_selected_period = pd.to_datetime(user_selected_month)
         user_churn_multiplier = 1.0
         user_acq_multiplier = 1.0
@@ -383,12 +392,30 @@ def show():
         with col2:
             df_user_month = df[df['FOM'].dt.to_period('M') == user_selected_period.to_period('M')]
             default_churn = float(df_user_month['Churn Accounts Rate'].values[0]) if not df_user_month.empty else 0
-            user_churn_multiplier = st.number_input("Set Churn Rate Multiplier (e.g., 2 = 2x current rate)", min_value=0.0, value=1.0, step=0.1, key="user_churn_multiplier")
-        
+            #user_churn_multiplier = st.number_input("Set Churn Rate Multiplier (e.g., 2 = 2x current rate)", min_value=0.0, value=1.0, step=0.1, key="user_churn_multiplier")
+            st.markdown("<p style='font-size:10px; font-weight:600;'>Set Churn Rate Multiplier (e.g., 2 = 2x current rate)</p>", unsafe_allow_html=True)
+
+            user_churn_multiplier = st.number_input(
+                label="",
+                min_value=0.0,
+                value=1.0,
+                step=0.1,
+                key="user_churn_multiplier"
+            )
+
         with col3:
             default_acq = float(df_user_month['New Accounts Rate'].values[0]) if not df_user_month.empty else 0
-            user_acq_multiplier = st.number_input("Set Acquisition Rate Multiplier (e.g., 0.5 = 50% of current)", min_value=0.0, value=1.0, step=0.1, key="user_acq_multiplier")
-    
+            #user_acq_multiplier = st.number_input("Set Acquisition Rate Multiplier (e.g., 0.5 = 50% of current)", min_value=0.0, value=1.0, step=0.1, key="user_acq_multiplier")
+            st.markdown("<p style='font-size:10px; font-weight:600;'>Set Acquisition Rate Multiplier (e.g., 0.5 = 50% of current)</p>", unsafe_allow_html=True)
+
+            user_acq_multiplier = st.number_input(
+                label="",  # Hide default label
+                min_value=0.0,
+                value=1.0,
+                step=0.1,
+                key="user_acq_multiplier"
+            )
+
     
         # --- Ask Keeper ---
         # --- Ask Keeper ---
@@ -423,7 +450,7 @@ def show():
         
             st.markdown(f"""
             <div style="border: 2px solid #888; padding: 20px; border-radius: 8px; background-color: #FFFFFF;">
-                            <table style="width: 100%; border-collapse: collapse;;font-size: 10px">
+                            <table style="width: 100%; border-collapse: collapse;;font-size: 8px">
                     <tr style="background-color: #f5f5f5;"><th></th><th>Date</th><th>Churn Rate (%)</th><th>Customer Acquisition Rate (%)</th></tr>
                     <tr><td style="padding: 6px 12px;">Last Month</td><td>{selected_period.strftime('%b %Y')}</td><td>{last_churn_rate:.2%}</td><td>{last_acq_rate:.2%}</td></tr>
                     <tr><td style="padding: 6px 12px;">Project Period</td><td>{projection_period}</td><td>{summarize_projection(calculate_6_month_projection(selected_period)).get('prj_churn_rate', 0):.2%}</td><td>{prj_new_rate:.2%}</td></tr>
