@@ -7,6 +7,11 @@ from pandas.tseries.offsets import DateOffset
 from streamlit_extras.switch_page_button import switch_page
 from utils import hide_sidebar
 
+if "page" in st.session_state:
+    page = st.session_state.page
+    st.session_state.page = None  # Reset it to avoid infinite loop
+    st.switch_page(f"{page}.py")  # Or handle manually
+    
 
 ###### data files:
 ######### 0_sim_contract.xlsx
