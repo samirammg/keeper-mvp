@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from streamlit_extras.switch_page_button import switch_page
 from utils import hide_sidebar
+from navigation import show_navigation
 
 st.set_page_config(page_title="Growth Pulse", layout="wide")
 
@@ -22,53 +23,8 @@ def show():
     # --- Header: Team Filter + Menu ---
     with st.container():
         _, filter_col = st.columns([4,1])
-        with filter_col:
-            
-            menu = st.selectbox(
-                "",[
-                    "🩺 Stay on Team Pulse",
-                    "↳  📌 CSM Activity",
-                    "↳  💬 Support Trends",
-                    "↳  📊 Product Usage",
-                    "📘 Customer Pulse",
-                    "🧩 Keeper Pulse",
-                    "💓 Growth Pulse",
-                    "📈 Vision Pulse",
-                    "↳  🧭 Strategy",
-                    "🚀 Keeper Agents",
-                    "🗄️ Keeper Data"
-                ],label_visibility="collapsed",key="nav_menu"
-            )
-            selected_team = st.selectbox(
-                "Select Team:",
-                [f"Team {i}" for i in range(1,8)],
-                index=0,
-                key="team_filter"
-            )
-        if menu == "🩺 Stay on Team Pulse":
-            pass
-        elif menu == "📘 Customer Pulse":
-            switch_page("Journey")
-        elif menu == "🧩 Keeper Pulse":
-            switch_page("Pulse")
-        elif menu == "💓 Growth Pulse":
-            switch_page("GrowthPulse")
-        elif menu == "↳  📌 CSM Activity":
-            switch_page("Activity")
-        elif menu == "↳  💬 Support Trends":
-            switch_page("Support")
-        elif menu == "↳  📊 Product Usage":
-            switch_page("Usage")
-        elif menu == "📈 Vision Pulse":
-            switch_page("VisionPulse")
-        elif menu == "↳  🧭 Strategy":
-            switch_page("Strategy")
-        elif menu == "🚀 Keeper Agents":
-            switch_page("agent")
-        elif menu == "🗄️ Keeper Data":
-            switch_page("onbording")
-
-    
+        with filter_col:     
+            show_navigation()
 
 
     # --- Static Key Metrics ---
