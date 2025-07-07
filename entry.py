@@ -47,4 +47,4 @@ if st.button("Enter"):
 
         # 🔁 Make sure your target file (like app.py) is inside /pages and matches this name exactly
 
-        st.switch_page("pages/app.py")  # NOT app.py — just the filename without extension
+        st.switch_page("app.py")  # NOT app.py — just the filename without extension
