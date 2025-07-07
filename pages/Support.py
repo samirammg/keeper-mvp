@@ -176,11 +176,9 @@ def show():
        # Layer 1
         col_layer1a, col_layer1b = st.columns(2)
         with col_layer1a:
-            #st.markdown("###### 📈 Support Ticket Trend")
-            st.markdown("<h6 style='text-align: center; font-size: 10px; margin-bottom: 6px;'>📈 Support Ticket Trend </h6>", unsafe_allow_html=True)
-    
-            #st.plotly_chart(px.line(df_viz, x='FOM', y='cumulative_total_tickets').update_layout(height=220, margin=dict(l=5, r=5, t=30, b=10)), use_container_width=True)
-         
+            #st.markdown("#### 📈 Support Ticket Trend")
+            st.markdown("<h6 style='text-align: center; font-size: 12px; margin-bottom: 6px;'>📈 Support Ticket Trend </h6>", unsafe_allow_html=True)
+            #st.plotly_chart(px.line(df_viz, x='FOM', y='cumulative_total_tickets').update_layout(height=220, margin=dict(l=5, r=5, t=30, b=10)), use_container_width=True)         
             fig_support = px.line(df_viz, x='FOM', y='cumulative_total_tickets')
 
             fig_support.update_layout(
@@ -196,13 +194,11 @@ def show():
                     tickangle=0
                 )
             )
-            
             st.plotly_chart(fig_support, use_container_width=True)
             
-
         with col_layer1b:
-            #st.markdown("###### 📈 Ticket Status Distribution")
-            st.markdown("<h6 style='text-align: center; font-size: 10px; margin-bottom: 6px;'>📈 Ticket Status Distribution </h6>", unsafe_allow_html=True)
+            #st.markdown("#### 📈 Ticket Status Distribution")
+            st.markdown("<h6 style='text-align: center; font-size: 12px; margin-bottom: 6px;'>📈 Ticket Status Distribution </h6>", unsafe_allow_html=True)
             fig2 = px.bar(df_status, x='FOM', y='count', color='status', barmode='stack')            
             fig2.update_layout(
                 height=200,
@@ -249,27 +245,32 @@ def show():
         
         with col_layer2b:
             st.markdown("<h6 style='text-align: center; font-size: 12px; margin-bottom: 6px;'>📈 Support Score (Last 12 Months)</h6>", unsafe_allow_html=True)
-        
-            # Filter only last 12 months for support score trend
+            
             selected_fom_dt = pd.to_datetime(selected_fom)
             start_score_dt = selected_fom_dt - relativedelta(months=12)
             df_score_trend = df[(df['FOM'] >= start_score_dt) & (df['FOM'] <= selected_fom_dt)]
-        
+            
             fig_score = px.line(
                 df_score_trend,
                 x='FOM',
                 y=['support_score_p50', 'support_score_p90', 'support_score_p100']
             )
-        
+            
             fig_score.update_layout(
-                legend=dict(orientation='h', y=-0.3, font=dict(size=6)),
                 height=260,
-                margin=dict(l=10, r=10, t=30, b=10)
+                margin=dict(t=30, l=10, r=10, b=70),
+                legend_orientation='h',
+                legend_y=-0.3,
+                legend_font=dict(size=10),
+                legend_title_text="",
+                xaxis_title=None,
+                xaxis=dict(
+                    tickfont=dict(size=10),
+                    tickangle=0
+                )
             )
-        
+
             st.plotly_chart(fig_score, use_container_width=True)
-    
-       
       
         with col_layer2c:        
             #st.markdown("###### 🔍 Ticket Subjects")
