@@ -112,7 +112,7 @@ def show():
         #st.markdown("---")
         
     with right_col:
-
+        st.markdown(" ")
         st.markdown("###### 🚨 Alert System for Emerging Risks")
         recs = [
         {"Suggestion": "If ‘risky’ customers don’t drop 5% this quarter, we risk $4 M ACV loss in 6 months."},
